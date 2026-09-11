@@ -33,38 +33,41 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-100">
 
-    <!-- PANTALLA DE ACCESO DE ALTO NIVEL -->
+    <!-- PANTALLA DE ACCESO INSTITUCIONAL -->
     <div id="authScreen" class="flex-1 flex flex-col items-center justify-center p-4 bg-[#081F5C]">
-        <div class="max-w-md w-full space-y-8 text-center">
-            
-            <div class="relative py-6">
-                <!-- LOGOTIPO DE LA FIRMA -->
-                <div class="inline-block p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md mb-3">
-                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x120/081F5C/C5A059?text=RAC';" alt="RAC Logo" class="w-24 h-24 object-contain mx-auto">
+        <div class="max-w-md w-full space-y-6 text-center">
+            <div class="relative py-4">
+                <div class="inline-block p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md mb-2">
+                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100/081F5C/C5A059?text=RAC';" alt="RAC Logo" class="w-20 h-20 object-contain mx-auto">
                 </div>
-                <h1 class="text-3xl font-black text-white tracking-wider">ROCABADO</h1>
-                <p class="text-xs font-bold text-[#C5A059] tracking-widest uppercase mt-1">Auditores Consultores RAC</p>
-                <p class="text-xs text-[#D8E3FF]/70 mt-3 font-light px-6">Plataforma Institucional de Control Financiero y Gestión Multisucursal</p>
+                <h1 class="text-2xl font-black text-white tracking-wider">ROCABADO</h1>
+                <p class="text-[11px] font-bold text-[#C5A059] tracking-widest uppercase mt-0.5">Auditores Consultores RAC</p>
+                <p class="text-[11px] italic text-amber-200/90 font-medium mt-1">“Transformando números en decisiones”</p>
+                
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-300">
+                    <span class="font-bold text-white block">Van Joseth Rocabado</span>
+                    <span class="text-[10px] text-[#70A6D1]">Auditor • Asesor Tributario • Analista Financiero</span>
+                </div>
             </div>
 
-            <div class="space-y-4 px-2">
-                <button onclick="openLoginModal('master')" class="w-full bg-gradient-to-r from-[#C5A059] to-[#A37E36] text-white p-4 rounded-xl font-bold shadow-lg flex items-center justify-between hover:brightness-110 transition">
+            <div class="space-y-3 px-2">
+                <button onclick="openLoginModal('master')" class="w-full bg-gradient-to-r from-[#C5A059] to-[#A37E36] text-white p-3.5 rounded-xl font-bold shadow-lg flex items-center justify-between hover:brightness-110 transition text-xs">
                     <div class="flex items-center space-x-3 text-left">
-                        <div class="p-2 bg-black/20 rounded-lg"><i class="fa-solid fa-crown text-lg"></i></div>
+                        <div class="p-2 bg-black/20 rounded-lg"><i class="fa-solid fa-crown text-base"></i></div>
                         <div>
-                            <div class="text-sm">Panel Master RAC</div>
-                            <div class="text-[10px] text-amber-100 font-normal">Creación de Empresas y Sucursales</div>
+                            <div>Casa Matriz / Panel Master</div>
+                            <div class="text-[10px] text-amber-100 font-normal">Supervisión Global y Sucursales</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
 
-                <button onclick="openLoginModal('empresa')" class="w-full bg-white/10 text-white p-4 rounded-xl font-bold border border-white/20 flex items-center justify-between hover:bg-white/20 transition backdrop-blur-sm">
+                <button onclick="openLoginModal('empresa')" class="w-full bg-white/10 text-white p-3.5 rounded-xl font-bold border border-white/20 flex items-center justify-between hover:bg-white/25 transition backdrop-blur-sm text-xs">
                     <div class="flex items-center space-x-3 text-left">
-                        <div class="p-2 bg-white/10 rounded-lg"><i class="fa-solid fa-building-columns text-lg text-[#70A6D1]"></i></div>
+                        <div class="p-2 bg-white/10 rounded-lg"><i class="fa-solid fa-building-columns text-base text-[#70A6D1]"></i></div>
                         <div>
-                            <div class="text-sm">Acceso Empresa / Sucursal</div>
-                            <div class="text-[10px] text-[#D8E3FF]/70 font-normal">Ingreso directo de Propietarios</div>
+                            <div>Ingreso Sucursal Operativa</div>
+                            <div class="text-[10px] text-[#D8E3FF]/70 font-normal">Registro diario de Operadores</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs"></i>
@@ -73,146 +76,145 @@
         </div>
     </div>
 
-    <!-- MODAL AUTENTICACIÓN / SELECCIÓN DE EMPRESA Y SUCURSAL -->
+    <!-- MODAL DE LOGIN / SELECCIÓN -->
     <div id="loginModal" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4 relative border border-slate-100">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-base"></i></button>
             <div class="text-center">
-                <h3 id="modalTitle" class="text-base font-bold text-[#081F5C]">Ingreso al Sistema</h3>
-                <p class="text-xs text-slate-500">Seleccione su empresa y credenciales</p>
+                <h3 id="modalTitle" class="text-sm font-bold text-[#081F5C]">Acceso al Sistema</h3>
+                <p class="text-[11px] text-slate-500">Credenciales de seguridad</p>
             </div>
             
-            <div class="space-y-3">
+            <div class="space-y-3 text-xs">
                 <div id="empresaGroup" class="hidden space-y-3">
                     <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Empresa</label>
-                        <select id="loginEmpresa" onchange="actualizarSucursalesLogin()" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium">
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Sucursal</label>
-                        <select id="loginSucursal" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium">
+                        <label class="text-[10px] font-bold text-slate-600 uppercase">Sucursal Operativa</label>
+                        <select id="loginSucursal" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
+                            <option value="Sucursal Pampa">Sucursal Pampa</option>
+                            <option value="Sucursal Villa">Sucursal Villa</option>
+                            <option value="Sucursal Norte">Sucursal Norte</option>
                         </select>
                     </div>
                 </div>
                 <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Usuario</label>
-                    <input type="text" id="loginUser" placeholder="Usuario" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
+                    <label class="text-[10px] font-bold text-slate-600 uppercase">Contraseña de Acceso</label>
+                    <input type="password" id="loginPass" placeholder="••••" class="w-full p-2.5 border rounded-xl bg-slate-50">
                 </div>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Contraseña</label>
-                    <input type="password" id="loginPass" placeholder="••••••••" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
-                </div>
-                <button onclick="login()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Ingresar al Sistema</button>
+                <button onclick="login()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold shadow-lg hover:bg-[#336AEC] transition">Acceder</button>
             </div>
         </div>
     </div>
 
-    <!-- PANEL MASTER RAC (CREACIÓN DE EMPRESAS Y SUCURSALES) -->
-    <div id="masterScreen" class="hidden flex-1 max-w-4xl w-full mx-auto p-6 space-y-6">
-        <div class="flex justify-between items-center border-b pb-4">
+    <!-- PANEL MASTER / CASA MATRIZ (CONSOLIDADOR GLOBAL) -->
+    <div id="masterScreen" class="hidden flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 gap-3">
             <div>
-                <h1 class="text-xl font-black text-[#081F5C]">Panel Master RAC</h1>
-                <p class="text-xs text-slate-500">Administración de Empresas, Sucursales y Usuarios</p>
+                <span class="text-[10px] font-extrabold text-[#C5A059] uppercase tracking-wider block">Casa Matriz - Panel Master</span>
+                <h1 class="text-xl font-black text-[#081F5C]">Van Joseth Rocabado</h1>
+                <p class="text-xs text-slate-500">Supervisión centralizada y consolidada de todas las sucursales</p>
             </div>
             <button onclick="logout()" class="text-xs bg-rose-600 text-white px-3 py-2 rounded-lg font-bold">Cerrar Sesión Master</button>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="executive-card p-5 space-y-4">
-                <h3 class="font-bold text-[#081F5C] text-sm flex items-center gap-2"><i class="fa-solid fa-building text-[#C5A059]"></i> Registrar Nueva Empresa</h3>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Nombre de la Empresa</label>
-                    <input type="text" id="mstrEmpresaNombre" placeholder="Ej. Clinica Dental San José" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
-                </div>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Sucursal Principal / Casa Matriz</label>
-                    <input type="text" id="mstrCasaMatriz" value="Casa Matriz" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
-                </div>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Clave de Acceso Inicial</label>
-                    <input type="text" id="mstrClaveInicial" value="1234" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
-                </div>
-                <button onclick="crearEmpresaMaster()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs">Crear Empresa</button>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="executive-card p-4 border-l-4 border-[#081F5C]">
+                <div class="text-[11px] text-slate-500 font-semibold">Total Ingresos Consolidados</div>
+                <div class="text-xl font-black text-[#081F5C]" id="masterIngresos">Bs 0.00</div>
             </div>
-
-            <div class="executive-card p-5 space-y-4">
-                <h3 class="font-bold text-[#081F5C] text-sm flex items-center gap-2"><i class="fa-solid fa-code-branch text-[#336AEC]"></i> Adicionar Sucursal a Empresa</h3>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Seleccionar Empresa</label>
-                    <select id="mstrSelectEmpresa" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium"></select>
-                </div>
-                <div>
-                    <label class="text-[11px] font-bold text-slate-600 uppercase">Nombre de Nueva Sucursal</label>
-                    <input type="text" id="mstrNuevaSucursal" placeholder="Ej. Sucursal Norte" class="w-full p-3 border rounded-xl text-xs bg-slate-50">
-                </div>
-                <button onclick="adicionarSucursalMaster()" class="w-full bg-[#336AEC] text-white py-3 rounded-xl font-bold text-xs">Registrar Sucursal</button>
+            <div class="executive-card p-4 border-l-4 border-rose-500">
+                <div class="text-[11px] text-slate-500 font-semibold">Total Gastos Consolidados</div>
+                <div class="text-xl font-black text-rose-600" id="masterGastos">Bs 0.00</div>
+            </div>
+            <div class="executive-card p-4 border-l-4 border-emerald-500">
+                <div class="text-[11px] text-slate-500 font-semibold">Utilidad Neta General</div>
+                <div class="text-xl font-black text-emerald-600" id="masterUtilidad">Bs 0.00</div>
             </div>
         </div>
 
-        <div class="executive-card p-5">
-            <h3 class="font-bold text-[#081F5C] text-sm mb-3">Empresas y Sucursales Activas en el Sistema</h3>
-            <div id="mstrListaEmpresas" class="space-y-3 text-xs"></div>
+        <div class="executive-card p-5 space-y-4">
+            <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Control por Sucursal (Pampa, Villa, Norte)</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-[#081F5C] text-white">
+                        <tr>
+                            <th class="p-3">Sucursal</th>
+                            <th class="p-3">Servicios Realizados</th>
+                            <th class="p-3">Efectivo / QR</th>
+                            <th class="p-3">Gastos Operativos</th>
+                            <th class="p-3">Utilidad Sucursal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="masterSucursalesList" class="divide-y divide-slate-100">
+                        <!-- Generado dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- SISTEMA OPERATIVO CENTRAL DE LA EMPRESA -->
+    <!-- SISTEMA OPERATIVO DE SUCURSAL / OPERADOR -->
     <div id="appScreen" class="hidden flex-1 flex flex-col">
         
-        <!-- HEADER INSTITUCIONAL CON LOGO -->
+        <!-- HEADER INSTITUCIONAL -->
         <header class="glass-header text-white shadow-xl sticky top-0 z-30">
             <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/80x80/081F5C/C5A059?text=RAC';" class="w-10 h-10 object-contain rounded-lg bg-white/10 p-1 border border-white/20">
+                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/80x80/081F5C/C5A059?text=RAC';" class="w-9 h-9 object-contain rounded-lg bg-white/10 p-1 border border-white/20">
                     <div>
-                        <div id="headerEmpresa" class="text-[11px] font-extrabold text-[#C5A059] tracking-widest uppercase">ROCABADO CONSULTORÍA</div>
-                        <div id="headerSucursal" class="text-sm font-bold text-white">Casa Matriz</div>
+                        <div id="headerSucursalTitle" class="text-xs font-extrabold text-[#C5A059] uppercase">Sucursal Pampa</div>
+                        <div class="text-[10px] text-slate-300">Van Joseth Rocabado • RAC Consultores</div>
                     </div>
                 </div>
-                <button onclick="logout()" class="text-xs bg-white/10 hover:bg-red-500/80 px-3 py-1.5 rounded-lg text-white font-medium transition flex items-center space-x-1">
-                    <i class="fa-solid fa-right-from-bracket"></i> <span class="hidden sm:inline">Salir</span>
-                </button>
+                
+                <div class="flex items-center gap-2">
+                    <button onclick="abrirCierreCajaModal()" class="bg-amber-600/90 hover:bg-amber-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow transition flex items-center gap-1">
+                        <i class="fa-solid fa-cash-register"></i> Cierre de Caja
+                    </button>
+                    <button onclick="logout()" class="bg-white/10 hover:bg-rose-600 text-xs px-2.5 py-1.5 rounded-lg font-medium transition">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
             </div>
 
-            <!-- NAVEGACIÓN PRINCIPAL -->
+            <!-- NAVEGACIÓN PRINCIPAL ADAPTATIVA -->
             <nav class="flex border-t border-white/10 overflow-x-auto max-w-6xl mx-auto text-xs">
-                <button onclick="switchTab('tabResumen')" class="tab-btn flex-1 py-3 px-2 text-center font-bold text-[#C5A059] border-b-2 border-[#C5A059] bg-white/5" id="btn-tabResumen">
+                <button onclick="switchTab('tabResumen')" class="tab-btn flex-1 py-3 px-3 text-center font-bold text-[#C5A059] border-b-2 border-[#C5A059] bg-white/5 whitespace-nowrap" id="btn-tabResumen">
                     <i class="fa-solid fa-chart-line block text-sm mb-1"></i> Resumen
                 </button>
-                <button onclick="switchTab('tabAgenda')" class="tab-btn flex-1 py-3 px-2 text-center font-medium text-slate-300 hover:text-white" id="btn-tabAgenda">
+                <button onclick="switchTab('tabServicios')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabServicios">
+                    <i class="fa-solid fa-list-check block text-sm mb-1"></i> Catálogo Servicios
+                </button>
+                <button onclick="switchTab('tabAgenda')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabAgenda">
                     <i class="fa-solid fa-calendar-days block text-sm mb-1"></i> Agenda
                 </button>
-                <button onclick="switchTab('tabVentas')" class="tab-btn flex-1 py-3 px-2 text-center font-medium text-slate-300 hover:text-white" id="btn-tabVentas">
-                    <i class="fa-solid fa-file-invoice-dollar block text-sm mb-1"></i> Ventas
+                <button onclick="switchTab('tabVentas')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabVentas">
+                    <i class="fa-solid fa-file-invoice-dollar block text-sm mb-1"></i> Ventas / Cobros
                 </button>
-                <button onclick="switchTab('tabGastos')" class="tab-btn flex-1 py-3 px-2 text-center font-medium text-slate-300 hover:text-white" id="btn-tabGastos">
+                <button onclick="switchTab('tabGastos')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabGastos">
                     <i class="fa-solid fa-wallet block text-sm mb-1"></i> Gastos
                 </button>
-                <button onclick="switchTab('tabPersonal')" class="tab-btn flex-1 py-3 px-2 text-center font-medium text-slate-300 hover:text-white" id="btn-tabPersonal">
-                    <i class="fa-solid fa-user-group block text-sm mb-1"></i> Personal
-                </button>
-                <button onclick="switchTab('tabReportes')" class="tab-btn flex-1 py-3 px-2 text-center font-medium text-slate-300 hover:text-white" id="btn-tabReportes">
-                    <i class="fa-solid fa-chart-pie block text-sm mb-1"></i> Reportes
+                <button onclick="switchTab('tabPersonal')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabPersonal">
+                    <i class="fa-solid fa-user-group block text-sm mb-1"></i> Personal / Planilla
                 </button>
             </nav>
         </header>
 
-        <!-- CONTENIDOS DE PESTAÑAS -->
-        <main class="flex-1 max-w-6xl w-full mx-auto p-4 space-y-6">
+        <!-- CONTENIDOS -->
+        <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-6">
 
-            <!-- 1. RESUMEN PROPIETARIO -->
+            <!-- 1. RESUMEN SUCURSAL -->
             <section id="tabResumen" class="tab-content space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h2 class="text-base font-bold text-[#081F5C]">Estado Financiero Real</h2>
-                        <p class="text-xs text-slate-500">Consolidado general para toma de decisiones del Propietario</p>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Resumen Financiero Diario</h2>
+                        <p class="text-[11px] text-slate-500">Balance operativo en tiempo real</p>
                     </div>
-                    <span class="gold-badge text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Caja Activa</span>
+                    <span class="gold-badge text-[10px] px-3 py-1 rounded-full font-bold uppercase">Caja Activa</span>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div class="executive-card p-4 border-l-4 border-[#081F5C]">
-                        <div class="text-[11px] text-slate-500 font-semibold">Efectivo Disponible</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Efectivo en Caja</div>
                         <div class="text-lg font-extrabold text-[#081F5C]" id="resEfectivo">Bs 0.00</div>
                     </div>
                     <div class="executive-card p-4 border-l-4 border-[#336AEC]">
@@ -223,31 +225,52 @@
                         <div class="text-[11px] text-slate-500 font-semibold">Cuentas por Cobrar</div>
                         <div class="text-lg font-extrabold text-amber-600" id="resPorCobrar">Bs 0.00</div>
                     </div>
-                    <div class="executive-card p-4 border-l-4 border-[#C5A059]">
-                        <div class="text-[11px] text-slate-500 font-semibold">Comisiones a Pagar</div>
-                        <div class="text-lg font-extrabold text-[#A37E36]" id="resComisionesTotal">Bs 0.00</div>
-                    </div>
                     <div class="executive-card p-4 border-l-4 border-rose-500">
-                        <div class="text-[11px] text-slate-500 font-semibold">Gastos de Empresa</div>
-                        <div class="text-lg font-extrabold text-rose-600" id="resGastosEmpresa">Bs 0.00</div>
-                    </div>
-                    <div class="executive-card p-4 border-l-4 border-purple-500">
-                        <div class="text-[11px] text-slate-500 font-semibold">Gastos Personales</div>
-                        <div class="text-lg font-extrabold text-purple-600" id="resGastosPersonales">Bs 0.00</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Gastos Operativos</div>
+                        <div class="text-lg font-extrabold text-rose-600" id="resGastos">Bs 0.00</div>
                     </div>
                     <div class="executive-card p-4 border-l-4 border-emerald-500 md:col-span-2">
-                        <div class="text-[11px] text-slate-500 font-semibold">Utilidad Neta de Operación</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Utilidad Neta Operativa</div>
                         <div class="text-xl font-black text-emerald-600" id="resUtilidadNeta">Bs 0.00</div>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. AGENDA CON MENSAJES DE WHATSAPP -->
+            <!-- 2. CATÁLOGO DE SERVICIOS (GESTIÓN DE PRECIOS Y COSTOS DIRECTOS) -->
+            <section id="tabServicios" class="tab-content hidden space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Catálogo de Servicios RAC</h2>
+                        <p class="text-[11px] text-slate-500">Gestión de precios, costos y tarifas oficiales</p>
+                    </div>
+                    <button onclick="toggleModal('nuevoServicioModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow hover:bg-[#336AEC] transition">+ Nuevo Servicio</button>
+                </div>
+
+                <div class="executive-card overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-[#081F5C] text-white font-bold">
+                                <tr>
+                                    <th class="p-3">Servicio</th>
+                                    <th class="p-3">Costo Directo (Bs)</th>
+                                    <th class="p-3">Precio Venta (Bs)</th>
+                                    <th class="p-3 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="serviciosCatalogoList" class="divide-y divide-slate-100">
+                                <!-- Generado dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. AGENDA Y CITAS -->
             <section id="tabAgenda" class="tab-content hidden space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h2 class="text-base font-bold text-[#081F5C]">Agenda y Citas</h2>
-                        <p class="text-xs text-slate-500">Notificaciones automáticas por WhatsApp</p>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Agenda de Citas y Servicios</h2>
+                        <p class="text-[11px] text-slate-500">Asignación de personal y notificación por WhatsApp</p>
                     </div>
                     <button onclick="toggleModal('agendaModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow hover:bg-[#336AEC] transition">+ Agendar Cita</button>
                 </div>
@@ -259,8 +282,8 @@
                                 <tr>
                                     <th class="p-3">Cliente / Teléfono</th>
                                     <th class="p-3">Servicio</th>
-                                    <th class="p-3">Atendido por</th>
-                                    <th class="p-3">Confirmación</th>
+                                    <th class="p-3">Personal Asignado</th>
+                                    <th class="p-3 text-right">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="agendaList" class="divide-y divide-slate-100"></tbody>
@@ -269,152 +292,137 @@
                 </div>
             </section>
 
-            <!-- 3. VENTAS Y SERVICIOS -->
-            <section id="tabVentas" class="tab-content hidden space-y-4 max-w-lg mx-auto">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-base font-bold text-[#081F5C]">Registro de Venta</h2>
-                    <button onclick="toggleModal('nuevoServicioModal')" class="text-xs font-bold text-[#336AEC] hover:underline">+ Nuevo Servicio</button>
-                </div>
-
-                <div class="executive-card p-5 space-y-4">
-                    <div class="relative">
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Seleccionar / Buscar Servicio</label>
-                        <input type="text" id="vtaBuscador" oninput="filtrarServicios()" placeholder="Escriba para buscar..." class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium">
-                        <div id="vtaResultadosBusqueda" class="absolute left-0 right-0 top-full bg-white border rounded-xl shadow-xl max-h-48 overflow-y-auto hidden z-20 mt-1 divide-y divide-slate-100"></div>
-                    </div>
-
-                    <div class="p-3 bg-slate-50 rounded-xl border">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Servicio Seleccionado:</span>
-                        <span id="vtaServicioSeleccionadoTexto" class="text-xs font-bold text-[#081F5C]">Ninguno</span>
-                    </div>
-
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Personal Asignado</label>
-                        <select id="vtaPersonal" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium"></select>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="text-[11px] font-bold text-slate-600 uppercase">Costo Directo (Bs)</label>
-                            <input type="number" id="vtaCosto" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-bold" value="0">
+            <!-- 4. VENTAS Y COBROS (CON HISTORIAL DE SERVICIOS REALIZADOS) -->
+            <section id="tabVentas" class="tab-content hidden space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Formulario de Venta -->
+                    <div class="executive-card p-5 space-y-4">
+                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Registrar Nueva Venta / Servicio</h3>
+                        
+                        <div class="relative">
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Buscar Servicio del Catálogo</label>
+                            <input type="text" id="vtaBuscador" oninput="filtrarServiciosVenta()" placeholder="Escriba nombre del servicio..." class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
+                            <div id="vtaResultadosBusqueda" class="absolute left-0 right-0 top-full bg-white border rounded-xl shadow-xl max-h-40 overflow-y-auto hidden z-20 mt-1 divide-y divide-slate-100"></div>
                         </div>
+
+                        <div class="p-3 bg-slate-50 rounded-xl border flex justify-between items-center text-xs">
+                            <div>
+                                <span class="text-[9px] font-bold text-slate-400 uppercase block">Seleccionado:</span>
+                                <span id="vtaServicioSeleccionadoTexto" class="font-bold text-[#081F5C]">Ninguno</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[9px] font-bold text-slate-400 uppercase block">Precio:</span>
+                                <span id="vtaPrecioTexto" class="font-bold text-emerald-600">Bs 0.00</span>
+                            </div>
+                        </div>
+
                         <div>
-                            <label class="text-[11px] font-bold text-slate-600 uppercase">Precio Cobrado (Bs)</label>
-                            <input type="number" id="vtaPrecio" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-bold text-[#081F5C]" value="0">
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Personal Ejecutor</label>
+                            <select id="vtaPersonal" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium"></select>
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Forma de Pago</label>
+                            <select id="vtaMetodo" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="Tarjeta/QR">Tarjeta / Transferencia QR</option>
+                                <option value="Por Cobrar">Cuenta por Cobrar (Deudor)</option>
+                            </select>
+                        </div>
+
+                        <button onclick="guardarVenta()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar y Cobrar</button>
+                    </div>
+
+                    <!-- Historial de Servicios Realizados -->
+                    <div class="executive-card p-5 space-y-4 flex flex-col">
+                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Historial de Ventas y Servicios Ejecutados</h3>
+                        <div class="flex-1 overflow-y-auto max-h-96 space-y-2 text-xs" id="historialVentasList">
+                            <span class="text-slate-400 italic">No hay ventas registradas aún hoy.</span>
                         </div>
                     </div>
-
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Forma de Pago</label>
-                        <select id="vtaMetodo" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium">
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Tarjeta">Tarjeta / Transferencia QR</option>
-                            <option value="Por Cobrar">Cuenta por Cobrar (Deudor)</option>
-                        </select>
-                    </div>
-
-                    <button onclick="guardarVenta()" class="w-full bg-[#081F5C] text-white py-3.5 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar Venta</button>
                 </div>
             </section>
 
-            <!-- 4. GASTOS CON DESPLEGABLE PERSONAL Y CATEGORÍAS -->
+            <!-- 5. GASTOS OPERATIVOS Y PERSONALES (CON MÉTODO DE PAGO EFECTIVO / QR) -->
             <section id="tabGastos" class="tab-content hidden space-y-4 max-w-lg mx-auto">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-base font-bold text-[#081F5C]">Registro de Gastos</h2>
-                    <button onclick="toggleModal('nuevaCategoriaModal')" class="text-xs font-bold text-[#336AEC] hover:underline">+ Crear Cuestión / Categoría</button>
+                    <h2 class="text-sm font-bold text-[#081F5C]">Registro de Gastos</h2>
+                    <button onclick="toggleModal('nuevaCategoriaModal')" class="text-xs font-bold text-[#336AEC] hover:underline">+ Categoría</button>
                 </div>
 
-                <div class="executive-card p-5 space-y-4">
+                <div class="executive-card p-5 space-y-4 text-xs">
                     <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Categoría del Gasto</label>
-                        <select id="gstCategoria" onchange="evaluarGastoPersonal()" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-medium">
+                        <label class="text-[10px] font-bold text-slate-600 uppercase">Categoría de Gasto</label>
+                        <select id="gstCategoria" onchange="evaluarGastoPersonal()" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
                             <option value="Servicios Básicos">Servicios Básicos (Luz, Agua, Teléfono)</option>
                             <option value="Alquiler">Alquiler</option>
-                            <option value="Sueldos">Sueldos y Salarios</option>
-                            <option value="Honorarios">Honorarios Profesionales</option>
-                            <option value="Materiales de Escritorio">Materiales de Escritorio</option>
-                            <option value="Materiales de Limpieza">Materiales de Limpieza</option>
-                            <option value="Mantenimiento">Mantenimiento de Equipos / Oficina</option>
-                            <option value="Vehículos">Vehículos (Combustible, Talleres)</option>
-                            <option value="Impuestos y Tasas">Impuestos y Tasas</option>
+                            <option value="Materiales">Materiales e Insumos</option>
+                            <option value="Mantenimiento">Mantenimiento</option>
+                            <option value="Impuestos">Impuestos y Tasas</option>
                             <option value="Gastos Personales">Gastos Personales del Propietario</option>
                         </select>
                     </div>
 
-                    <!-- DESPLEGABLE DINÁMICO DE GASTOS PERSONALES -->
-                    <div id="subGastoPersonalGroup" class="hidden p-3 bg-purple-50 rounded-xl border border-purple-200 space-y-2">
-                        <label class="text-[11px] font-bold text-purple-900 uppercase block">Subcategoría Personal Propietario</label>
-                        <select id="gstSubPersonal" class="w-full p-2.5 border rounded-lg text-xs bg-white font-medium text-purple-900">
-                            <option value="Hijos">Hijos (Colegio, Mesadas)</option>
+                    <div id="subGastoPersonalGroup" class="hidden p-3 bg-purple-50 rounded-xl border border-purple-200 space-y-1">
+                        <label class="text-[10px] font-bold text-purple-900 uppercase block">Subcategoría Personal</label>
+                        <select id="gstSubPersonal" class="w-full p-2 border rounded-lg bg-white font-medium text-purple-900">
+                            <option value="Hijos">Hijos / Familia</option>
                             <option value="Alimentos">Alimentos y Mercado</option>
                             <option value="Salud">Salud y Medicamentos</option>
-                            <option value="Servicios Básicos Hogar">Servicios Básicos Hogar</option>
-                            <option value="Salidas y Paseos">Salidas y Paseos</option>
-                            <option value="Educación">Educación</option>
+                            <option value="Varios">Varios Personales</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Detalle / Concepto</label>
-                        <input type="text" id="gstDetalle" placeholder="Detalle específico del egreso..." class="w-full p-3 border rounded-xl text-xs bg-slate-50">
+                        <label class="text-[10px] font-bold text-slate-600 uppercase">Método de Pago del Gasto</label>
+                        <select id="gstMetodoPago" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
+                            <option value="Efectivo">Efectivo (Caja)</option>
+                            <option value="QR/Transferencia">Transferencia QR / Banco</option>
+                        </select>
                     </div>
 
                     <div>
-                        <label class="text-[11px] font-bold text-slate-600 uppercase">Monto Cancelado (Bs)</label>
-                        <input type="number" id="gstMonto" placeholder="0.00" class="w-full p-3 border rounded-xl text-xs bg-slate-50 font-bold text-rose-600">
+                        <label class="text-[10px] font-bold text-slate-600 uppercase">Concepto / Detalle</label>
+                        <input type="text" id="gstDetalle" placeholder="Detalle del egreso..." class="w-full p-2.5 border rounded-xl bg-slate-50">
                     </div>
 
-                    <button onclick="guardarGasto()" class="w-full bg-rose-600 text-white py-3.5 rounded-xl font-bold text-xs shadow-lg hover:bg-rose-700 transition">Registrar Gasto</button>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-600 uppercase">Monto (Bs)</label>
+                        <input type="number" id="gstMonto" placeholder="0.00" class="w-full p-2.5 border rounded-xl bg-slate-50 font-bold text-rose-600">
+                    </div>
+
+                    <button onclick="guardarGasto()" class="w-full bg-rose-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-rose-700 transition">Registrar Gasto</button>
                 </div>
             </section>
 
-            <!-- 5. PERSONAL Y PLANILLA DE REPORTES DE PAGO -->
+            <!-- 6. PERSONAL Y PLANILLA DE COMISIONES Y UTILIDAD -->
             <section id="tabPersonal" class="tab-content hidden space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h2 class="text-base font-bold text-[#081F5C]">Planilla de Personal y Comisiones</h2>
-                        <p class="text-xs text-slate-500">Cálculo de pago sobre servicios prestados</p>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Planilla de Personal y Comisiones</h2>
+                        <p class="text-[11px] text-slate-500">Servicios realizados, ingresos generados, costos directos y utilidad</p>
                     </div>
                     <div class="flex space-x-2">
-                        <button onclick="imprimirPlanillaPersonal()" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-bold shadow"><i class="fa-solid fa-print"></i> Planilla</button>
+                        <button onclick="window.print()" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-bold shadow"><i class="fa-solid fa-print"></i> Imprimir Planilla</button>
                         <button onclick="toggleModal('personalModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow">+ Personal</button>
                     </div>
                 </div>
 
                 <div class="executive-card overflow-hidden">
-                    <table class="w-full text-left text-xs">
-                        <thead class="bg-[#081F5C] text-white font-bold">
-                            <tr>
-                                <th class="p-3">Nombre</th>
-                                <th class="p-3">Teléfono</th>
-                                <th class="p-3">% Comisión</th>
-                                <th class="p-3">Servicios Atendidos</th>
-                                <th class="p-3">Monto A Pagar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="personalList" class="divide-y divide-slate-100"></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- 6. REPORTES, RANGO DE FECHAS Y CUENTAS POR COBRAR -->
-            <section id="tabReportes" class="tab-content hidden space-y-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h2 class="text-base font-bold text-[#081F5C]">Módulo de Reportes Especializados</h2>
-                        <p class="text-xs text-slate-500">Filtrado por rango de fechas y clientes deudores</p>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="executive-card p-4 space-y-3">
-                        <h3 class="font-bold text-amber-700 text-xs uppercase tracking-wider border-b pb-2"><i class="fa-solid fa-clock-rotate-left"></i> Cuentas por Cobrar (Clientes Deudores)</h3>
-                        <div id="listaCuentasPorCobrar" class="space-y-2 text-xs"></div>
-                    </div>
-
-                    <div class="executive-card p-4 space-y-3">
-                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider border-b pb-2"><i class="fa-solid fa-trophy text-[#C5A059]"></i> Top Clientes Destacados</h3>
-                        <div id="listaTopClientes" class="space-y-2 text-xs"></div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-[#081F5C] text-white font-bold">
+                                <tr>
+                                    <th class="p-3">Nombre del Personal</th>
+                                    <th class="p-3">Teléfono</th>
+                                    <th class="p-3">% Comisión</th>
+                                    <th class="p-3 text-center">Servicios Hechos</th>
+                                    <th class="p-3">Ingresos Generados</th>
+                                    <th class="p-3">Comisión a Pagar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="personalList" class="divide-y divide-slate-100"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -422,104 +430,114 @@
         </main>
     </div>
 
-    <!-- MODALES DE CONTROL -->
+    <!-- MODALES DE CREACIÓN Y EDICIÓN -->
     <div id="agendaModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
             <h3 class="font-bold text-[#081F5C] text-sm">Agendar Cita / Servicio</h3>
-            <input type="text" id="agCliente" placeholder="Nombre del Cliente" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="text" id="agTel" placeholder="Número Celular (Ej. 59170012345)" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="text" id="agServicio" placeholder="Servicio Agendado" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <select id="agPersonal" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50"></select>
+            <input type="text" id="agCliente" placeholder="Nombre del Cliente" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="text" id="agTel" placeholder="Celular (Ej. 59170012345)" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="text" id="agServicio" placeholder="Servicio requerido" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Personal Asignado</label>
+                <select id="agPersonal" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium"></select>
+            </div>
             <div class="flex space-x-2 pt-2">
-                <button onclick="guardarAgenda()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl text-xs font-bold">Agendar y Notificar</button>
-                <button onclick="toggleModal('agendaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl text-xs font-bold text-slate-600">Cancelar</button>
+                <button onclick="guardarAgenda()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Agendar</button>
+                <button onclick="toggleModal('agendaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
 
     <div id="personalModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
             <h3 class="font-bold text-[#081F5C] text-sm">Registrar Personal</h3>
-            <input type="text" id="perNombre" placeholder="Nombre Completo" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="text" id="perTel" placeholder="Teléfono" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="number" id="perComision" placeholder="% Comisión" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
+            <input type="text" id="perNombre" placeholder="Nombre Completo" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="text" id="perTel" placeholder="Teléfono" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="number" id="perComision" placeholder="% Comisión" class="w-full p-2.5 border rounded-xl bg-slate-50">
             <div class="flex space-x-2 pt-2">
-                <button onclick="guardarPersonal()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl text-xs font-bold">Guardar</button>
-                <button onclick="toggleModal('personalModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl text-xs font-bold text-slate-600">Cancelar</button>
+                <button onclick="guardarPersonal()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
+                <button onclick="toggleModal('personalModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
 
     <div id="nuevoServicioModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3">
-            <h3 class="font-bold text-[#081F5C] text-sm">Crear Servicio Predeterminado</h3>
-            <input type="text" id="nsNombre" placeholder="Nombre del Servicio" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="number" id="nsCosto" placeholder="Costo Directo Sugerido (Bs)" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
-            <input type="number" id="nsPrecio" placeholder="Precio Venta Sugerido (Bs)" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
+            <h3 class="font-bold text-[#081F5C] text-sm" id="modalServicioTitulo">Crear / Editar Servicio</h3>
+            <input type="hidden" id="nsIndex" value="-1">
+            <input type="text" id="nsNombre" placeholder="Nombre del Servicio" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="number" id="nsCosto" placeholder="Costo Directo (Bs)" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            <input type="number" id="nsPrecio" placeholder="Precio Venta (Bs)" class="w-full p-2.5 border rounded-xl bg-slate-50">
             <div class="flex space-x-2 pt-2">
-                <button onclick="crearServicioCatalogo()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl text-xs font-bold">Agregar</button>
-                <button onclick="toggleModal('nuevoServicioModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl text-xs font-bold text-slate-600">Cancelar</button>
+                <button onclick="guardarServicioCatalogo()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
+                <button onclick="toggleModal('nuevoServicioModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
 
     <div id="nuevaCategoriaModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
             <h3 class="font-bold text-[#081F5C] text-sm">Nueva Categoría de Gasto</h3>
-            <input type="text" id="ncNombre" placeholder="Nombre de Categoría" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
+            <input type="text" id="ncNombre" placeholder="Nombre Categoría" class="w-full p-2.5 border rounded-xl bg-slate-50">
             <div class="flex space-x-2 pt-2">
-                <button onclick="crearCategoriaGasto()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl text-xs font-bold">Guardar</button>
-                <button onclick="toggleModal('nuevaCategoriaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl text-xs font-bold text-slate-600">Cancelar</button>
+                <button onclick="guardarCategoriaGasto()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
+                <button onclick="toggleModal('nuevaCategoriaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
 
-    <!-- LÓGICA JAVASCRIPT COMPLETA Y FUNCIONAL -->
+    <!-- MODAL DE CIERRE DE CAJA / TURNO -->
+    <div id="cierreCajaModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 text-xs">
+            <div class="text-center border-b pb-3">
+                <h3 class="font-black text-[#081F5C] text-sm">CIERRE DE CAJA / TURNO</h3>
+                <p class="text-[10px] text-slate-500" id="cierreSucursalLabel">Sucursal Pampa</p>
+            </div>
+            
+            <div class="space-y-2 bg-slate-50 p-3 rounded-xl border">
+                <div class="flex justify-between"><span>Efectivo Recaudado:</span> <strong id="cierreEfectivo">Bs 0.00</strong></div>
+                <div class="flex justify-between"><span>QR / Transferencias:</span> <strong id="cierreQr">Bs 0.00</strong></div>
+                <div class="flex justify-between"><span>Cuentas por Cobrar:</span> <strong id="cierrePorCobrar">Bs 0.00</strong></div>
+                <div class="flex justify-between border-t pt-2 text-rose-600"><span>Menos Gastos Operativos:</span> <strong id="cierreGastos">Bs 0.00</strong></div>
+                <div class="flex justify-between border-t pt-2 font-black text-[#081F5C] text-sm"><span>Total Cierre Efectivo:</span> <strong id="cierreTotal">Bs 0.00</strong></div>
+            </div>
+
+            <div class="flex space-x-2 pt-2">
+                <button onclick="ejecutarCierreTurno()" class="flex-1 bg-amber-600 text-white py-3 rounded-xl font-bold">Confirmar y Cerrar Turno</button>
+                <button onclick="toggleModal('cierreCajaModal')" class="flex-1 bg-slate-200 py-3 rounded-xl font-bold text-slate-600">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LÓGICA JAVASCRIPT INTEGRADA -->
     <script>
-        let dbMaster = {
-            empresas: [
-                {
-                    nombre: 'Rocabado Consultores RAC',
-                    sucursales: ['Casa Matriz', 'Sucursal Norte'],
-                    clave: '1234'
-                }
-            ]
-        };
-
-        let currentSession = { empresa: '', sucursal: '' };
-
         let state = {
+            sucursalActual: 'Sucursal Pampa',
             serviciosCatalogo: [
                 { id: 1, nombre: 'Auditoría Financiera General', costo: 200, precio: 1000 },
                 { id: 2, nombre: 'Asesoría Tributaria Mensual', costo: 50, precio: 400 },
-                { id: 3, nombre: 'Certificación Contable Pami', costo: 80, precio: 500 }
+                { id: 3, nombre: 'Certificación Contable', costo: 80, precio: 500 }
             ],
-            servicioSeleccionado: null,
+            servicioSeleccionadoVenta: null,
             personal: [
-                { id: 1, nombre: 'Lic. Juan Pérez', tel: '70012345', porc: 10, servCount: 0, acumulado: 0 },
-                { id: 2, nombre: 'Dra. María López', tel: '70098765', porc: 15, servCount: 0, acumulado: 0 }
+                { id: 1, nombre: 'Juan Pérez', tel: '70012345', porc: 10, servCount: 0, ingresosGen: 0 },
+                { id: 2, nombre: 'María López', tel: '70098765', porc: 15, servCount: 0, ingresosGen: 0 }
             ],
             agenda: [],
             ventas: [],
             gastos: []
         };
 
-        let currentRole = '';
-
         function openLoginModal(role) {
-            currentRole = role;
-            document.getElementById('modalTitle').innerText = role === 'master' ? 'Panel Master RAC' : 'Acceso Empresa / Propietario';
-            const empGroup = document.getElementById('empresaGroup');
-            
-            if(role === 'empresa') {
-                empGroup.classList.remove('hidden');
-                cargarEmpresasLogin();
+            if(role === 'master') {
+                document.getElementById('authScreen').classList.add('hidden');
+                document.getElementById('masterScreen').classList.remove('hidden');
+                renderMaster();
             } else {
-                empGroup.classList.add('hidden');
+                document.getElementById('empresaGroup').classList.remove('hidden');
+                document.getElementById('loginModal').classList.remove('hidden');
+                document.getElementById('loginModal').classList.add('flex');
             }
-
-            document.getElementById('loginModal').classList.remove('hidden');
-            document.getElementById('loginModal').classList.add('flex');
         }
 
         function closeLoginModal() {
@@ -527,45 +545,13 @@
             document.getElementById('loginModal').classList.remove('flex');
         }
 
-        function cargarEmpresasLogin() {
-            const select = document.getElementById('loginEmpresa');
-            select.innerHTML = '';
-            dbMaster.empresas.forEach((e, idx) => {
-                select.innerHTML += `<option value="${idx}">${e.nombre}</option>`;
-            });
-            actualizarSucursalesLogin();
-        }
-
-        function actualizarSucursalesLogin() {
-            const idx = document.getElementById('loginEmpresa').value;
-            const selectSuc = document.getElementById('loginSucursal');
-            selectSuc.innerHTML = '';
-            if(dbMaster.empresas[idx]) {
-                dbMaster.empresas[idx].sucursales.forEach(s => {
-                    selectSuc.innerHTML += `<option value="${s}">${s}</option>`;
-                });
-            }
-        }
-
         function login() {
-            if(currentRole === 'master') {
-                document.getElementById('authScreen').classList.add('hidden');
-                document.getElementById('masterScreen').classList.remove('hidden');
-                renderMaster();
-            } else {
-                const empIdx = document.getElementById('loginEmpresa').value;
-                const empObj = dbMaster.empresas[empIdx];
-                currentSession.empresa = empObj.nombre;
-                currentSession.sucursal = document.getElementById('loginSucursal').value;
-
-                document.getElementById('headerEmpresa').innerText = currentSession.empresa;
-                document.getElementById('headerSucursal').innerText = currentSession.sucursal;
-
-                document.getElementById('authScreen').classList.add('hidden');
-                document.getElementById('appScreen').classList.remove('hidden');
-                renderAll();
-            }
+            state.sucursalActual = document.getElementById('loginSucursal').value;
+            document.getElementById('headerSucursalTitle').innerText = state.sucursalActual;
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('appScreen').classList.remove('hidden');
             closeLoginModal();
+            renderAll();
         }
 
         function logout() {
@@ -574,58 +560,12 @@
             document.getElementById('authScreen').classList.remove('hidden');
         }
 
-        function renderMaster() {
-            const list = document.getElementById('mstrListaEmpresas');
-            const select = document.getElementById('mstrSelectEmpresa');
-            list.innerHTML = '';
-            select.innerHTML = '';
-
-            dbMaster.empresas.forEach((e, i) => {
-                select.innerHTML += `<option value="${i}">${e.nombre}</option>`;
-                list.innerHTML += `
-                    <div class="p-3 bg-slate-50 border rounded-xl flex justify-between items-center">
-                        <div>
-                            <span class="font-bold text-[#081F5C] block">${e.nombre}</span>
-                            <span class="text-slate-500 text-[11px]">Sucursales: ${e.sucursales.join(', ')}</span>
-                        </div>
-                        <span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-1 rounded font-bold">Clave: ${e.clave}</span>
-                    </div>
-                `;
-            });
-        }
-
-        function crearEmpresaMaster() {
-            const nombre = document.getElementById('mstrEmpresaNombre').value;
-            const casa = document.getElementById('mstrCasaMatriz').value || 'Casa Matriz';
-            const clave = document.getElementById('mstrClaveInicial').value || '1234';
-
-            if(!nombre) return alert('Ingrese el nombre de la empresa');
-
-            dbMaster.empresas.push({ nombre, sucursales: [casa], clave });
-            document.getElementById('mstrEmpresaNombre').value = '';
-            renderMaster();
-            alert('Empresa creada correctamente');
-        }
-
-        function adicionarSucursalMaster() {
-            const idx = document.getElementById('mstrSelectEmpresa').value;
-            const suc = document.getElementById('mstrNuevaSucursal').value;
-
-            if(!suc) return alert('Ingrese el nombre de la sucursal');
-
-            dbMaster.empresas[idx].sucursales.push(suc);
-            document.getElementById('mstrNuevaSucursal').value = '';
-            renderMaster();
-            alert('Sucursal añadida');
-        }
-
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
                 el.classList.remove('text-[#C5A059]', 'border-b-2', 'border-[#C5A059]', 'bg-white/5');
                 el.classList.add('text-slate-300');
             });
-            
             document.getElementById(tabId).classList.remove('hidden');
             const activeBtn = document.getElementById('btn-' + tabId);
             activeBtn.classList.add('text-[#C5A059]', 'border-b-2', 'border-[#C5A059]', 'bg-white/5');
@@ -638,23 +578,73 @@
             modal.classList.toggle('flex');
         }
 
-        function filtrarServicios() {
+        // GESTIÓN DE SERVICIOS
+        function renderServiciosCatalogo() {
+            const tbody = document.getElementById('serviciosCatalogoList');
+            tbody.innerHTML = '';
+            state.serviciosCatalogo.forEach((s, idx) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold text-[#081F5C]">${s.nombre}</td>
+                        <td class="p-3">Bs ${s.costo.toFixed(2)}</td>
+                        <td class="p-3 font-semibold text-emerald-600">Bs ${s.precio.toFixed(2)}</td>
+                        <td class="p-3 text-right">
+                            <button onclick="editarServicio(${idx})" class="text-[#336AEC] font-bold px-2 py-1 bg-blue-50 rounded"><i class="fa-solid fa-pen"></i> Editar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function editarServicio(idx) {
+            const s = state.serviciosCatalogo[idx];
+            document.getElementById('nsIndex').value = idx;
+            document.getElementById('nsNombre').value = s.nombre;
+            document.getElementById('nsCosto').value = s.costo;
+            document.getElementById('nsPrecio').value = s.precio;
+            document.getElementById('modalServicioTitulo').innerText = "Editar Servicio";
+            toggleModal('nuevoServicioModal');
+        }
+
+        function guardarServicioCatalogo() {
+            const idx = parseInt(document.getElementById('nsIndex').value);
+            const nombre = document.getElementById('nsNombre').value;
+            const costo = parseFloat(document.getElementById('nsCosto').value) || 0;
+            const precio = parseFloat(document.getElementById('nsPrecio').value) || 0;
+
+            if(!nombre || !precio) return alert('Ingrese nombre y precio de venta');
+
+            if(idx === -1) {
+                state.serviciosCatalogo.push({ id: Date.now(), nombre, costo, precio });
+            } else {
+                state.serviciosCatalogo[idx] = { ...state.serviciosCatalogo[idx], nombre, costo, precio };
+            }
+
+            document.getElementById('nsIndex').value = '-1';
+            document.getElementById('nsNombre').value = '';
+            document.getElementById('nsCosto').value = '';
+            document.getElementById('nsPrecio').value = '';
+            document.getElementById('modalServicioTitulo').innerText = "Crear / Editar Servicio";
+            toggleModal('nuevoServicioModal');
+            renderServiciosCatalogo();
+        }
+
+        // BÚSQUEDA EN VENTAS
+        function filtrarServiciosVenta() {
             const query = document.getElementById('vtaBuscador').value.toLowerCase();
             const resDiv = document.getElementById('vtaResultadosBusqueda');
-            
             if(!query) { resDiv.classList.add('hidden'); return; }
 
             const filtrados = state.serviciosCatalogo.filter(s => s.nombre.toLowerCase().includes(query));
             resDiv.innerHTML = '';
-
             if(filtrados.length === 0) {
-                resDiv.innerHTML = `<div class="p-3 text-xs text-slate-400">Sin resultados</div>`;
+                resDiv.innerHTML = `<div class="p-3 text-slate-400">Sin coincidencias</div>`;
             } else {
                 filtrados.forEach(s => {
                     resDiv.innerHTML += `
-                        <div onclick="seleccionarServicio(${s.id})" class="p-3 hover:bg-slate-50 cursor-pointer flex justify-between items-center text-xs">
+                        <div onclick="seleccionarServicioVenta(${s.id})" class="p-3 hover:bg-slate-50 cursor-pointer flex justify-between">
                             <span class="font-bold text-[#081F5C]">${s.nombre}</span>
-                            <span class="text-slate-500 font-semibold">Bs ${s.precio}</span>
+                            <span class="font-semibold text-emerald-600">Bs ${s.precio}</span>
                         </div>
                     `;
                 });
@@ -662,31 +652,49 @@
             resDiv.classList.remove('hidden');
         }
 
-        function seleccionarServicio(id) {
+        function seleccionarServicioVenta(id) {
             const s = state.serviciosCatalogo.find(x => x.id === id);
             if(!s) return;
-            state.servicioSeleccionado = s;
-
-            document.getElementById('vtaServicioSeleccionadoTexto').innerText = s.nombre;
-            document.getElementById('vtaCosto').value = s.costo;
-            document.getElementById('vtaPrecio').value = s.precio;
+            state.servicioSeleccionadoVenta = s;
             document.getElementById('vtaBuscador').value = s.nombre;
+            document.getElementById('vtaServicioSeleccionadoTexto').innerText = s.nombre;
+            document.getElementById('vtaPrecioTexto').innerText = `Bs ${s.precio.toFixed(2)}`;
             document.getElementById('vtaResultadosBusqueda').classList.add('hidden');
         }
 
-        function crearServicioCatalogo() {
-            const nombre = document.getElementById('nsNombre').value;
-            const costo = parseFloat(document.getElementById('nsCosto').value) || 0;
-            const precio = parseFloat(document.getElementById('nsPrecio').value) || 0;
+        function guardarVenta() {
+            if(!state.servicioSeleccionadoVenta) return alert('Seleccione un servicio del catálogo');
+            const personalId = parseInt(document.getElementById('vtaPersonal').value);
+            const metodo = document.getElementById('vtaMetodo').value;
+            const s = state.servicioSeleccionadoVenta;
 
-            if(!nombre || !precio) return alert('Ingrese datos del servicio');
+            const p = state.personal.find(x => x.id === personalId);
+            let comision = 0;
+            if(p) {
+                const margen = s.precio - s.costo;
+                if(margen > 0) comision = (margen * p.porc) / 100;
+                p.servCount += 1;
+                p.ingresosGen += s.precio;
+            }
 
-            const nuevo = { id: Date.now(), nombre, costo, precio };
-            state.serviciosCatalogo.push(nuevo);
-            seleccionarServicio(nuevo.id);
+            state.ventas.push({
+                id: Date.now(),
+                sucursal: state.sucursalActual,
+                servicio: s.nombre,
+                personal: p ? p.nombre : 'General',
+                precio: s.precio,
+                costo: s.costo,
+                metodo,
+                comision
+            });
 
-            toggleModal('nuevoServicioModal');
-            document.getElementById('nsNombre').value = '';
+            state.servicioSeleccionadoVenta = null;
+            document.getElementById('vtaBuscador').value = '';
+            document.getElementById('vtaServicioSeleccionadoTexto').innerText = 'Ninguno';
+            document.getElementById('vtaPrecioTexto').innerText = 'Bs 0.00';
+
+            alert('Venta registrada con éxito');
+            renderAll();
         }
 
         function evaluarGastoPersonal() {
@@ -696,7 +704,80 @@
             else group.classList.add('hidden');
         }
 
-        function crearCategoriaGasto() {
+        function guardarGasto() {
+            const categoria = document.getElementById('gstCategoria').value;
+            const subcat = categoria === 'Gastos Personales' ? document.getElementById('gstSubPersonal').value : '';
+            const metodo = document.getElementById('gstMetodoPago').value;
+            const detalle = document.getElementById('gstDetalle').value;
+            const monto = parseFloat(document.getElementById('gstMonto').value) || 0;
+
+            if(!monto) return alert('Ingrese el monto del gasto');
+
+            state.gastos.push({ id: Date.now(), sucursal: state.sucursalActual, categoria, subcat, metodo, detalle, monto });
+            document.getElementById('gstDetalle').value = '';
+            document.getElementById('gstMonto').value = '';
+
+            alert('Gasto registrado con éxito');
+            renderAll();
+        }
+
+        function guardarPersonal() {
+            const nombre = document.getElementById('perNombre').value;
+            const tel = document.getElementById('perTel').value;
+            const porc = parseFloat(document.getElementById('perComision').value) || 0;
+            if(!nombre) return alert('Ingrese nombre del personal');
+
+            state.personal.push({ id: Date.now(), nombre, tel, porc, servCount: 0, ingresosGen: 0 });
+            toggleModal('personalModal');
+            renderPersonal();
+        }
+
+        function guardarAgenda() {
+            const cliente = document.getElementById('agCliente').value;
+            const tel = document.getElementById('agTel').value;
+            const servicio = document.getElementById('agServicio').value;
+            const personalId = document.getElementById('agPersonal').value;
+            const p = state.personal.find(x => x.id == personalId);
+
+            if(!cliente || !tel) return alert('Ingrese datos del cliente');
+
+            state.agenda.push({ id: Date.now(), cliente, tel, servicio, personal: p ? p.nombre : 'General' });
+            toggleModal('agendaModal');
+            renderAgenda();
+        }
+
+        function enviarWhatsapp(tel, cliente, servicio) {
+            const msj = encodeURIComponent(`Hola ${cliente}, le saludamos de Rocabado Consultores (${state.sucursalActual}). Confirmamos su cita para el servicio: ${servicio}. ¡Le esperamos!`);
+            window.open(`https://api.whatsapp.com/send?phone=${tel}&text=${msj}`, '_blank');
+        }
+
+        function abrirCierreCajaModal() {
+            let efec = 0, qr = 0, porCobrar = 0, gastos = 0;
+            state.ventas.filter(v => v.sucursal === state.sucursalActual).forEach(v => {
+                if(v.metodo === 'Efectivo') efec += v.precio;
+                else if(v.metodo === 'Tarjeta/QR') qr += v.precio;
+                else if(v.metodo === 'Por Cobrar') porCobrar += v.precio;
+            });
+            state.gastos.filter(g => g.sucursal === state.sucursalActual && g.metodo === 'Efectivo').forEach(g => {
+                gastos += g.monto;
+            });
+
+            const totalEfectivoCaja = efec - gastos;
+            document.getElementById('cierreSucursalLabel').innerText = state.sucursalActual;
+            document.getElementById('cierreEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
+            document.getElementById('cierreQr').innerText = `Bs ${qr.toFixed(2)}`;
+            document.getElementById('cierrePorCobrar').innerText = `Bs ${porCobrar.toFixed(2)}`;
+            document.getElementById('cierreGastos').innerText = `Bs ${gastos.toFixed(2)}`;
+            document.getElementById('cierreTotal').innerText = `Bs ${totalEfectivoCaja.toFixed(2)}`;
+            toggleModal('cierreCajaModal');
+        }
+
+        function ejecutarCierreTurno() {
+            alert('Cierre de caja y turno ejecutado con éxito. Los registros quedaron auditados.');
+            toggleModal('cierreCajaModal');
+        }
+
+        function guardarCategoriaGasto() {
             const nombre = document.getElementById('ncNombre').value;
             if(!nombre) return;
             const select = document.getElementById('gstCategoria');
@@ -708,197 +789,110 @@
             document.getElementById('ncNombre').value = '';
         }
 
-        function guardarPersonal() {
-            const nombre = document.getElementById('perNombre').value;
-            const tel = document.getElementById('perTel').value;
-            const porc = parseFloat(document.getElementById('perComision').value) || 0;
-
-            if(!nombre) return alert('Nombre requerido');
-            state.personal.push({ id: Date.now(), nombre, tel, porc, servCount: 0, acumulado: 0 });
-            toggleModal('personalModal');
-            renderPersonal();
-        }
-
-        function guardarAgenda() {
-            const cliente = document.getElementById('agCliente').value;
-            const tel = document.getElementById('agTel').value;
-            const servicio = document.getElementById('agServicio').value;
-            const personal = document.getElementById('agPersonal').value;
-
-            if(!cliente || !tel) return alert('Complete cliente y teléfono');
-
-            state.agenda.push({ id: Date.now(), cliente, tel, servicio, personal });
-            toggleModal('agendaModal');
-            renderAgenda();
-        }
-
-        function enviarWhatsapp(tel, cliente, servicio) {
-            const msj = encodeURIComponent(`Hola ${cliente}, le saludamos de ${currentSession.empresa}. Confirmamos su cita agendada para el servicio: ${servicio}. ¡Le esperamos!`);
-            window.open(`https://api.whatsapp.com/send?phone=${tel}&text=${msj}`, '_blank');
-        }
-
-        function guardarVenta() {
-            if(!state.servicioSeleccionado) return alert('Seleccione un servicio');
-
-            const personalId = parseInt(document.getElementById('vtaPersonal').value);
-            const costo = parseFloat(document.getElementById('vtaCosto').value) || 0;
-            const precio = parseFloat(document.getElementById('vtaPrecio').value) || 0;
-            const metodo = document.getElementById('vtaMetodo').value;
-
-            const margen = precio - costo;
-            const p = state.personal.find(x => x.id === personalId);
-            let comisionCalculada = 0;
-
-            if(p && margen > 0) {
-                comisionCalculada = (margen * p.porc) / 100;
-                p.acumulado += comisionCalculada;
-                p.servCount += 1;
-            }
-
-            state.ventas.push({ 
-                id: Date.now(), 
-                servicio: state.servicioSeleccionado.nombre, 
-                personal: p ? p.nombre : 'N/A', 
-                costo, 
-                precio, 
-                metodo, 
-                comision: comisionCalculada,
-                cliente: state.servicioSeleccionado.nombre + " - Cliente"
-            });
-
-            alert('Venta registrada exitosamente');
-            state.servicioSeleccionado = null;
-            document.getElementById('vtaBuscador').value = '';
-            document.getElementById('vtaServicioSeleccionadoTexto').innerText = 'Ninguno';
-            renderAll();
-            switchTab('tabResumen');
-        }
-
-        function guardarGasto() {
-            const categoria = document.getElementById('gstCategoria').value;
-            let subcat = categoria === 'Gastos Personales' ? document.getElementById('gstSubPersonal').value : '';
-            const detalle = document.getElementById('gstDetalle').value;
-            const monto = parseFloat(document.getElementById('gstMonto').value) || 0;
-
-            if(!monto) return alert('Ingrese monto');
-
-            state.gastos.push({ id: Date.now(), categoria, subcat, detalle, monto });
-            document.getElementById('gstDetalle').value = '';
-            document.getElementById('gstMonto').value = '';
-
-            alert('Gasto registrado con éxito');
-            renderAll();
-            switchTab('tabResumen');
-        }
-
         function renderAll() {
+            renderServiciosCatalogo();
             renderPersonal();
             renderAgenda();
             renderResumen();
-            renderReportes();
-        }
-
-        function renderPersonal() {
-            const tbody = document.getElementById('personalList');
-            const selects = [document.getElementById('vtaPersonal'), document.getElementById('agPersonal')];
-            
-            tbody.innerHTML = '';
-            selects.forEach(s => s.innerHTML = '');
-
-            state.personal.forEach(p => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="p-3 font-bold text-[#081F5C]">${p.nombre}</td>
-                        <td class="p-3">${p.tel}</td>
-                        <td class="p-3 font-semibold">${p.porc}%</td>
-                        <td class="p-3 font-bold text-center">${p.servCount}</td>
-                        <td class="p-3 font-bold text-[#336AEC]">Bs ${p.acumulado.toFixed(2)}</td>
-                    </tr>
-                `;
-
-                selects.forEach(s => {
-                    s.innerHTML += `<option value="${p.id}">${p.nombre} (${p.porc}%)</option>`;
-                });
-            });
-        }
-
-        function renderAgenda() {
-            const tbody = document.getElementById('agendaList');
-            tbody.innerHTML = '';
-            state.agenda.forEach(a => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="p-3 font-semibold text-slate-800">${a.cliente}<br><span class="text-[10px] text-slate-400">${a.tel}</span></td>
-                        <td class="p-3">${a.servicio}</td>
-                        <td class="p-3">${a.personal}</td>
-                        <td class="p-3">
-                            <button onclick="enviarWhatsapp('${a.tel}', '${a.cliente}', '${a.servicio}')" class="bg-emerald-600 text-white text-[10px] px-2.5 py-1 rounded-lg font-bold hover:bg-emerald-700 flex items-center gap-1">
-                                <i class="fa-brands fa-whatsapp text-sm"></i> Notificar
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            });
+            renderVentasHistorial();
         }
 
         function renderResumen() {
-            let efec = 0, tarj = 0, porC = 0, com = 0;
-            state.ventas.forEach(v => {
+            let efec = 0, tarj = 0, porC = 0, gst = 0;
+            state.ventas.filter(v => v.sucursal === state.sucursalActual).forEach(v => {
                 if(v.metodo === 'Efectivo') efec += v.precio;
-                else if(v.metodo === 'Tarjeta') tarj += v.precio;
+                else if(v.metodo === 'Tarjeta/QR') tarj += v.precio;
                 else if(v.metodo === 'Por Cobrar') porC += v.precio;
-                com += v.comision;
+            });
+            state.gastos.filter(g => g.sucursal === state.sucursalActual).forEach(g => {
+                gst += g.monto;
             });
 
-            let gEmp = 0, gPer = 0;
-            state.gastos.forEach(g => {
-                if(g.categoria === 'Gastos Personales') gPer += g.monto;
-                else gEmp += g.monto;
-            });
-
-            const utilidad = (efec + tarj) - gEmp - com;
+            const utilidad = (efec + tarj) - gst;
 
             document.getElementById('resEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
             document.getElementById('resTarjeta').innerText = `Bs ${tarj.toFixed(2)}`;
             document.getElementById('resPorCobrar').innerText = `Bs ${porC.toFixed(2)}`;
-            document.getElementById('resComisionesTotal').innerText = `Bs ${com.toFixed(2)}`;
-            document.getElementById('resGastosEmpresa').innerText = `Bs ${gEmp.toFixed(2)}`;
-            document.getElementById('resGastosPersonales').innerText = `Bs ${gPer.toFixed(2)}`;
+            document.getElementById('resGastos').innerText = `Bs ${gst.toFixed(2)}`;
             document.getElementById('resUtilidadNeta').innerText = `Bs ${utilidad.toFixed(2)}`;
         }
 
-        function renderReportes() {
-            const deudores = document.getElementById('listaCuentasPorCobrar');
-            const top = document.getElementById('listaTopClientes');
-            deudores.innerHTML = '';
-            top.innerHTML = '';
-
-            const porCobrarVentas = state.ventas.filter(v => v.metodo === 'Por Cobrar');
-            if(porCobrarVentas.length === 0) {
-                deudores.innerHTML = `<span class="text-slate-400">Sin cuentas pendientes por cobrar</span>`;
-            } else {
-                porCobrarVentas.forEach(v => {
-                    deudores.innerHTML += `
-                        <div class="p-2 bg-amber-50 rounded border border-amber-200 flex justify-between">
-                            <span>${v.servicio}</span>
-                            <span class="font-bold text-amber-700">Bs ${v.precio.toFixed(2)}</span>
-                        </div>
-                    `;
-                });
+        function renderVentasHistorial() {
+            const list = document.getElementById('historialVentasList');
+            const ventasSuc = state.ventas.filter(v => v.sucursal === state.sucursalActual);
+            list.innerHTML = '';
+            if(ventasSuc.length === 0) {
+                list.innerHTML = `<span class="text-slate-400 italic">No hay ventas registradas.</span>`;
+                return;
             }
-
-            state.ventas.slice(0, 5).forEach((v, i) => {
-                top.innerHTML += `
-                    <div class="p-2 bg-slate-50 rounded border flex justify-between">
-                        <span>${i+1}. ${v.servicio}</span>
-                        <span class="font-bold text-[#081F5C]">Bs ${v.precio.toFixed(2)}</span>
+            ventasSuc.forEach(v => {
+                list.innerHTML += `
+                    <div class="p-2.5 bg-slate-50 border rounded-xl flex justify-between items-center">
+                        <div>
+                            <strong class="text-[#081F5C]">${v.servicio}</strong>
+                            <div class="text-[10px] text-slate-500">Atendido por: ${v.personal} | Pago: ${v.metodo}</div>
+                        </div>
+                        <div class="text-right font-bold text-emerald-600">Bs ${v.precio.toFixed(2)}</div>
                     </div>
                 `;
             });
         }
 
-        function imprimirPlanillaPersonal() {
-            window.print();
+        function renderPersonal() {
+            const tbody = document.getElementById('personalList');
+            const selectAg = document.getElementById('agPersonal');
+            const selectVta = document.getElementById('vtaPersonal');
+            tbody.innerHTML = '';
+            selectAg.innerHTML = '';
+            selectVta.innerHTML = '';
+
+            state.personal.forEach(p => {
+                let comisionTotalPagar = (p.ingresosGen * p.porc) / 100;
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold text-[#081F5C]">${p.nombre}</td>
+                        <td class="p-3">${p.tel}</td>
+                        <td class="p-3 font-semibold">${p.porc}%</td>
+                        <td class="p-3 text-center font-bold">${p.servCount}</td>
+                        <td class="p-3 font-semibold text-emerald-600">Bs ${p.ingresosGen.toFixed(2)}</td>
+                        <td class="p-3 font-bold text-[#336AEC]">Bs ${comisionTotalPagar.toFixed(2)}</td>
+                    </tr>
+                `;
+
+                selectAg.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
+                selectVta.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
+            });
+        }
+
+        function renderMaster() {
+            const tbody = document.getElementById('masterSucursalesList');
+            const sucursales = ['Sucursal Pampa', 'Sucursal Villa', 'Sucursal Norte'];
+            tbody.innerHTML = '';
+
+            let totalIng = 0, totalGst = 0;
+
+            sucursales.forEach(suc => {
+                let ing = 0, gst = 0;
+                state.ventas.filter(v => v.sucursal === suc).forEach(v => ing += v.precio);
+                state.gastos.filter(g => g.sucursal === suc).forEach(g => gst += g.monto);
+                let util = ing - gst;
+                totalIng += ing;
+                totalGst += gst;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold text-[#081F5C]">${suc}</td>
+                        <td class="p-3">${state.ventas.filter(v => v.sucursal === suc).length} servicios</td>
+                        <td class="p-3 font-semibold text-emerald-600">Bs ${ing.toFixed(2)}</td>
+                        <td class="p-3 font-semibold text-rose-600">Bs ${gst.toFixed(2)}</td>
+                        <td class="p-3 font-bold text-[#336AEC]">Bs ${util.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('masterIngresos').innerText = `Bs ${totalIng.toFixed(2)}`;
+            document.getElementById('masterGastos').innerText = `Bs ${totalGst.toFixed(2)}`;
+            document.getElementById('masterUtilidad').innerText = `Bs ${(totalIng - totalGst).toFixed(2)}`;
         }
     </script>
 </body>
