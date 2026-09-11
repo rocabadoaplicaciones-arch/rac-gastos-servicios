@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAC - Resumen Ejecutivo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .bg-gradient-rac { background: linear-gradient(135deg, #0d3291 0%, #1a52d4 100%); }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans pb-20">
+
+  <!-- HEADER INSTITUCIONAL -->
+  <header class="bg-white border-b px-4 py-3 flex justify-between items-center sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <button class="text-xl text-slate-700"><i class="fa-solid fa-bars"></i></button>
+      <div>
+        <p class="text-[10px] font-bold tracking-widest text-blue-900 uppercase">ROCABADO · GESTIÓN EMPRESARIAL</p>
+        <h1 class="text-lg font-bold text-slate-800">Resumen Ejecutivo</h1>
+      </div>
+    </div>
+    <div class="w-9 h-9 rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-sm">
+      A
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="p-4 max-w-md mx-auto space-y-4">
+
+    <!-- 🔵 CARD CONSOLIDADO GENERAL -->
+    <div class="bg-gradient-rac rounded-2xl p-5 text-white shadow-lg">
+      <p class="text-xs uppercase tracking-wider text-blue-200 font-semibold">TOTAL CONSOLIDADO</p>
+      <h2 class="text-3xl font-extrabold my-1">Bs 78.244,00</h2>
+      <p class="text-[11px] text-blue-200 mb-4 uppercase tracking-wide">VENTAS DEL PERÍODO</p>
+
+      <div class="grid grid-cols-2 gap-2 text-slate-800">
+        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white">
+          <p class="text-[10px] text-blue-100">Casa Matriz</p>
+          <p class="text-sm font-bold">Bs 46.744,00</p>
+        </div>
+        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white">
+          <p class="text-[10px] text-blue-100">Sucursal Norte</p>
+          <p class="text-sm font-bold">Bs 16.225,00</p>
+        </div>
+        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white col-span-2">
+          <p class="text-[10px] text-blue-100">Sucursal Sur</p>
+          <p class="text-sm font-bold">Bs 15.275,00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚪ CARD: ¿CUÁNTO VENDIMOS? -->
+    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO VENDIMOS?</p>
+      <h3 class="text-2xl font-black text-slate-900">Bs 78.244,00</h3>
+      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
+        <div class="flex justify-between"><span>Casa Matriz</span><span class="font-semibold text-slate-800">Bs 46.744,00</span></div>
+        <div class="flex justify-between"><span>Sucursal Norte</span><span class="font-semibold text-slate-800">Bs 16.225,00</span></div>
+        <div class="flex justify-between"><span>Sucursal Sur</span><span class="font-semibold text-slate-800">Bs 15.275,00</span></div>
+      </div>
+    </div>
+
+    <!-- ⚪ CARD: ¿CUÁNTO COBRAMOS? -->
+    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO COBRAMOS?</p>
+      <h3 class="text-2xl font-black text-slate-900">Bs 74.788,00</h3>
+      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
+        <div class="flex justify-between"><span>Casa Matriz</span><span class="font-semibold text-slate-800">Bs 43.708,00</span></div>
+        <div class="flex justify-between"><span>Sucursal Norte</span><span class="font-semibold text-slate-800">Bs 16.225,00</span></div>
+        <div class="flex justify-between"><span>Sucursal Sur</span><span class="font-semibold text-slate-800">Bs 14.855,00</span></div>
+      </div>
+    </div>
+
+    <!-- ⚪ CARD: ¿CUÁNTO GASTAMOS? -->
+    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO GASTAMOS?</p>
+      <h3 class="text-2xl font-black text-slate-900">Bs 10.033,00</h3>
+      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
+        <div class="flex justify-between"><span>Gastos Operativos Empresa</span><span class="font-semibold text-slate-800">Bs 8.500,00</span></div>
+        <div class="flex justify-between text-amber-700"><span>Retiros / Gastos Personales</span><span class="font-semibold">Bs 1.533,00</span></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BARRA DE NAVEGACIÓN INFERIOR (5 PESTAÑAS) -->
+  <nav class="fixed bottom-0 inset-x-0 bg-white border-t flex justify-around py-2 text-[10px] font-medium text-slate-500 z-50">
+    <button class="flex flex-col items-center text-blue-700"><i class="fa-solid fa-chart-pie text-base mb-0.5"></i>Inicio</button>
+    <button class="flex flex-col items-center"><i class="fa-solid fa-circle-plus text-base mb-0.5"></i>Ingresos</button>
+    <button class="flex flex-col items-center"><i class="fa-solid fa-circle-minus text-base mb-0.5"></i>Gastos</button>
+    <button class="flex flex-col items-center"><i class="fa-solid fa-lock text-base mb-0.5"></i>Cierre</button>
+    <button class="flex flex-col items-center"><i class="fa-solid fa-receipt text-base mb-0.5"></i>Por Cobrar</button>
+  </nav>
+
+</body>
+</html>
