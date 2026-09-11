@@ -1,98 +1,455 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAC - Resumen Ejecutivo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>RAC - Gestión Empresarial Multiempresa</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#081F5C',
+              primary: '#336AEC',
+              accent: '#70A6D1',
+              soft: '#D8E3FF',
+              bg: '#F9CFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    .bg-gradient-rac { background: linear-gradient(135deg, #0d3291 0%, #1a52d4 100%); }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+    .pb-safe { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
   </style>
 </head>
-<body class="bg-gray-100 font-sans pb-20">
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen relative pb-safe">
 
-  <!-- HEADER INSTITUCIONAL -->
-  <header class="bg-white border-b px-4 py-3 flex justify-between items-center sticky top-0 z-50">
-    <div class="flex items-center gap-3">
-      <button class="text-xl text-slate-700"><i class="fa-solid fa-bars"></i></button>
-      <div>
-        <p class="text-[10px] font-bold tracking-widest text-blue-900 uppercase">ROCABADO · GESTIÓN EMPRESARIAL</p>
-        <h1 class="text-lg font-bold text-slate-800">Resumen Ejecutivo</h1>
+  <!-- HEADER NAVEGACIÓN Y EMPRESA MAESTRA -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-30 px-4 py-3 shadow-sm">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <button onclick="toggleSidebar()" class="text-gray-600 hover:text-brand-dark focus:outline-none p-1">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+        <div>
+          <div class="flex items-center space-x-1">
+            <span class="text-xs font-bold tracking-wider text-brand-dark uppercase">RAC CONSULTORIA</span>
+            <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+          </div>
+          <button onclick="openEmpresaModal()" class="flex items-center text-sm font-bold text-gray-900 hover:text-brand-primary">
+            <span id="currentEmpresaName">Empresa Principal S.R.L.</span>
+            <i class="fa-solid fa-chevron-down text-xs ml-1 text-gray-500"></i>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="w-9 h-9 rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-sm">
-      A
+      <button onclick="openSucursalModal()" class="bg-brand-soft text-brand-dark p-2 rounded-full text-xs font-bold flex items-center space-x-1 hover:bg-blue-100">
+        <i class="fa-solid fa-store"></i>
+        <span id="sucursalesCountTag">3 Sucursales</span>
+      </button>
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="p-4 max-w-md mx-auto space-y-4">
+  <!-- CONTENIDORES DE VISTAS DINÁMICAS -->
+  <main class="max-w-md mx-auto px-4 pt-4">
 
-    <!-- 🔵 CARD CONSOLIDADO GENERAL -->
-    <div class="bg-gradient-rac rounded-2xl p-5 text-white shadow-lg">
-      <p class="text-xs uppercase tracking-wider text-blue-200 font-semibold">TOTAL CONSOLIDADO</p>
-      <h2 class="text-3xl font-extrabold my-1">Bs 78.244,00</h2>
-      <p class="text-[11px] text-blue-200 mb-4 uppercase tracking-wide">VENTAS DEL PERÍODO</p>
+    <!-- VISTA 1: INICIO / RESUMEN EJECUTIVO -->
+    <section id="view-inicio" class="space-y-4">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-black text-brand-dark">Resumen Ejecutivo</h1>
+        <button onclick="openSucursalModal()" class="text-xs text-brand-primary font-bold hover:underline">
+          <i class="fa-solid fa-[#336AEC] fa-sliders"></i> Gestionar Sucursales
+        </button>
+      </div>
 
-      <div class="grid grid-cols-2 gap-2 text-slate-800">
-        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white">
-          <p class="text-[10px] text-blue-100">Casa Matriz</p>
-          <p class="text-sm font-bold">Bs 46.744,00</p>
+      <!-- CARDS CONSOLIDADOS -->
+      <div class="bg-gradient-to-br from-brand-dark to-brand-primary rounded-2xl p-5 text-white shadow-lg">
+        <span class="text-xs tracking-wider uppercase opacity-80 font-semibold">Total Consolidado Ventas</span>
+        <div class="text-3xl font-extrabold mt-1" id="dashTotalVentas">Bs 0,00</div>
+        
+        <div class="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-white/20 text-xs">
+          <div>
+            <span class="opacity-75 block">Total Cobrado</span>
+            <span class="font-bold text-sm" id="dashTotalCobrado">Bs 0,00</span>
+          </div>
+          <div>
+            <span class="opacity-75 block">Total Gastos</span>
+            <span class="font-bold text-sm text-red-200" id="dashTotalGastos">Bs 0,00</span>
+          </div>
         </div>
-        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white">
-          <p class="text-[10px] text-blue-100">Sucursal Norte</p>
-          <p class="text-sm font-bold">Bs 16.225,00</p>
+      </div>
+
+      <!-- DESGLOSE POR SUCURSALES ACTIVAS -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500">¿Cuánto Vendimos por Sucursal?</h2>
+          <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">Activas</span>
         </div>
-        <div class="bg-white/20 backdrop-blur-md p-2.5 rounded-xl border border-white/10 text-white col-span-2">
-          <p class="text-[10px] text-blue-100">Sucursal Sur</p>
-          <p class="text-sm font-bold">Bs 15.275,00</p>
+        <div id="desgloseVentasSucursales" class="space-y-2 text-sm divide-y divide-gray-50">
+          <!-- Dinámico -->
         </div>
       </div>
-    </div>
 
-    <!-- ⚪ CARD: ¿CUÁNTO VENDIMOS? -->
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
-      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO VENDIMOS?</p>
-      <h3 class="text-2xl font-black text-slate-900">Bs 78.244,00</h3>
-      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
-        <div class="flex justify-between"><span>Casa Matriz</span><span class="font-semibold text-slate-800">Bs 46.744,00</span></div>
-        <div class="flex justify-between"><span>Sucursal Norte</span><span class="font-semibold text-slate-800">Bs 16.225,00</span></div>
-        <div class="flex justify-between"><span>Sucursal Sur</span><span class="font-semibold text-slate-800">Bs 15.275,00</span></div>
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">Resumen Operativo</h2>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between py-1">
+            <span class="text-gray-600">Gastos Operativos Empresa</span>
+            <span class="font-bold text-gray-900" id="dashGastosOp">Bs 0,00</span>
+          </div>
+          <div class="flex justify-between py-1">
+            <span class="text-gray-600">Retiros / Gastos Personales</span>
+            <span class="font-bold text-amber-700" id="dashGastosPers">Bs 0,00</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ⚪ CARD: ¿CUÁNTO COBRAMOS? -->
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
-      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO COBRAMOS?</p>
-      <h3 class="text-2xl font-black text-slate-900">Bs 74.788,00</h3>
-      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
-        <div class="flex justify-between"><span>Casa Matriz</span><span class="font-semibold text-slate-800">Bs 43.708,00</span></div>
-        <div class="flex justify-between"><span>Sucursal Norte</span><span class="font-semibold text-slate-800">Bs 16.225,00</span></div>
-        <div class="flex justify-between"><span>Sucursal Sur</span><span class="font-semibold text-slate-800">Bs 14.855,00</span></div>
-      </div>
-    </div>
+    <!-- VISTA 2: INGRESOS -->
+    <section id="view-ingresos" class="hidden space-y-4">
+      <h1 class="text-xl font-black text-brand-dark">Registrar Ingreso / Venta</h1>
+      <form id="formIngreso" onsubmit="registrarIngreso(event)" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Sucursal</label>
+          <select id="selectSucursalIngreso" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none">
+            <!-- Dinámico -->
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Monto de Venta (Bs)</label>
+          <input type="number" step="0.01" id="montoIngreso" required placeholder="0.00" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Monto Cobrado Efectivo/Transf. (Bs)</label>
+          <input type="number" step="0.01" id="montoCobrado" required placeholder="0.00" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Concepto / Cliente</label>
+          <input type="text" id="conceptoIngreso" placeholder="Ej. Servicio de Auditoría" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-brand-primary text-white font-bold py-3 rounded-lg shadow hover:bg-blue-700 transition">
+          Guardar Ingreso
+        </button>
+      </form>
+    </section>
 
-    <!-- ⚪ CARD: ¿CUÁNTO GASTAMOS? -->
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
-      <p class="text-[11px] font-bold text-slate-400 tracking-wider uppercase">¿CUÁNTO GASTAMOS?</p>
-      <h3 class="text-2xl font-black text-slate-900">Bs 10.033,00</h3>
-      <div class="border-t pt-2 space-y-1.5 text-xs text-slate-600">
-        <div class="flex justify-between"><span>Gastos Operativos Empresa</span><span class="font-semibold text-slate-800">Bs 8.500,00</span></div>
-        <div class="flex justify-between text-amber-700"><span>Retiros / Gastos Personales</span><span class="font-semibold">Bs 1.533,00</span></div>
+    <!-- VISTA 3: GASTOS -->
+    <section id="view-gastos" class="hidden space-y-4">
+      <h1 class="text-xl font-black text-brand-dark">Registrar Gasto / Egreso</h1>
+      <form id="formGasto" onsubmit="registrarGasto(event)" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Tipo de Gasto</label>
+          <select id="tipoGasto" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none">
+            <option value="operativo">Gasto Operativo de la Empresa</option>
+            <option value="personal">Retiro / Gasto Personal</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Sucursal Afectada</label>
+          <select id="selectSucursalGasto" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none">
+            <!-- Dinámico -->
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Monto (Bs)</label>
+          <input type="number" step="0.01" id="montoGasto" required placeholder="0.00" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-600 mb-1">Detalle / Proveedor</label>
+          <input type="text" id="conceptoGasto" placeholder="Ej. Pago de alquiler u oficina" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-primary outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg shadow hover:bg-red-700 transition">
+          Guardar Gasto
+        </button>
+      </form>
+    </section>
+
+    <!-- VISTA 4: CIERRE DE CAJA -->
+    <section id="view-cierre" class="hidden space-y-4">
+      <h1 class="text-xl font-black text-brand-dark">Cierre de Caja Diario</h1>
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
+        <p class="text-sm text-gray-600">Balance neto de caja para el periodo actual:</p>
+        <div class="p-4 bg-gray-50 rounded-lg space-y-2">
+          <div class="flex justify-between text-sm"><span>Cobrado Efectivo:</span><span id="cierreCobrado" class="font-bold">Bs 0,00</span></div>
+          <div class="flex justify-between text-sm"><span>Gastos Totales:</span><span id="cierreGastos" class="font-bold text-red-600">Bs 0,00</span></div>
+          <hr />
+          <div class="flex justify-between text-base font-bold"><span>Saldo Físico en Caja:</span><span id="cierreSaldo" class="text-brand-primary">Bs 0,00</span></div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- VISTA 5: POR COBRAR -->
+    <section id="view-por-cobrar" class="hidden space-y-4">
+      <h1 class="text-xl font-black text-brand-dark">Cuentas Por Cobrar</h1>
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-gray-500 uppercase">Pendiente Total</span>
+          <span id="totalPorCobrar" class="text-lg font-black text-amber-600">Bs 0,00</span>
+        </div>
+        <div id="listaPorCobrar" class="space-y-2 text-sm">
+          <!-- Dinámico -->
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- BARRA DE NAVEGACIÓN INFERIOR (5 PESTAÑAS) -->
-  <nav class="fixed bottom-0 inset-x-0 bg-white border-t flex justify-around py-2 text-[10px] font-medium text-slate-500 z-50">
-    <button class="flex flex-col items-center text-blue-700"><i class="fa-solid fa-chart-pie text-base mb-0.5"></i>Inicio</button>
-    <button class="flex flex-col items-center"><i class="fa-solid fa-circle-plus text-base mb-0.5"></i>Ingresos</button>
-    <button class="flex flex-col items-center"><i class="fa-solid fa-circle-minus text-base mb-0.5"></i>Gastos</button>
-    <button class="flex flex-col items-center"><i class="fa-solid fa-lock text-base mb-0.5"></i>Cierre</button>
-    <button class="flex flex-col items-center"><i class="fa-solid fa-receipt text-base mb-0.5"></i>Por Cobrar</button>
+  <!-- MODAL BARA DE SUCURSALES (CONFIGURACIÓN DINÁMICA) -->
+  <div id="modalSucursales" class="fixed inset-0 bg-black/50 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-md rounded-t-2xl sm:rounded-2xl p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="font-bold text-lg text-brand-dark">Gestión de Sucursales</h3>
+        <button onclick="closeSucursalModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+      </div>
+      
+      <!-- AGREGAR SUCURSAL -->
+      <div class="flex space-x-2">
+        <input type="text" id="nuevaSucursalNombre" placeholder="Nombre nueva sucursal..." class="flex-1 border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-primary" />
+        <button onclick="crearSucursal()" class="bg-brand-primary text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-blue-700">Añadir</button>
+      </div>
+
+      <!-- LISTA DE SUCURSALES -->
+      <div id="listaSucursalesModal" class="space-y-2">
+        <!-- Dinámico -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CAMBIO DE EMPRESA MAESTRA -->
+  <div id="modalEmpresa" class="fixed inset-0 bg-black/50 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-md rounded-t-2xl sm:rounded-2xl p-5 space-y-4">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="font-bold text-lg text-brand-dark">Cambiar de Empresa</h3>
+        <button onclick="closeEmpresaModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+      </div>
+      <div class="space-y-2">
+        <button onclick="seleccionarEmpresa('Empresa Principal S.R.L.')" class="w-full text-left p-3 border rounded-xl font-bold hover:bg-blue-50 flex justify-between items-center">
+          <span>Empresa Principal S.R.L.</span>
+          <i class="fa-solid fa-check text-brand-primary"></i>
+        </button>
+        <button onclick="seleccionarEmpresa('Consultora RAC Bolivia')" class="w-full text-left p-3 border rounded-xl font-bold hover:bg-blue-50 flex justify-between items-center">
+          <span>Consultora RAC Bolivia</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV BAR INFERIOR INTERACTIVA -->
+  <nav class="fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 z-40 px-3 py-2 shadow-lg">
+    <div class="max-w-md mx-auto grid grid-cols-5 gap-1 text-center">
+      <button onclick="switchTab('inicio')" id="nav-inicio" class="flex flex-col items-center text-brand-primary font-bold py-1">
+        <i class="fa-solid fa-chart-pie text-lg"></i>
+        <span class="text-[10px] mt-1">Inicio</span>
+      </button>
+      <button onclick="switchTab('ingresos')" id="nav-ingresos" class="flex flex-col items-center text-gray-400 hover:text-brand-primary py-1">
+        <i class="fa-solid fa-circle-plus text-lg"></i>
+        <span class="text-[10px] mt-1">Ingresos</span>
+      </button>
+      <button onclick="switchTab('gastos')" id="nav-gastos" class="flex flex-col items-center text-gray-400 hover:text-brand-primary py-1">
+        <i class="fa-solid fa-circle-minus text-lg"></i>
+        <span class="text-[10px] mt-1">Gastos</span>
+      </button>
+      <button onclick="switchTab('cierre')" id="nav-cierre" class="flex flex-col items-center text-gray-400 hover:text-brand-primary py-1">
+        <i class="fa-solid fa-lock text-lg"></i>
+        <span class="text-[10px] mt-1">Cierre</span>
+      </button>
+      <button onclick="switchTab('por-cobrar')" id="nav-por-cobrar" class="flex flex-col items-center text-gray-400 hover:text-brand-primary py-1">
+        <i class="fa-solid fa-receipt text-lg"></i>
+        <span class="text-[10px] mt-1">Por Cobrar</span>
+      </button>
+    </div>
   </nav>
 
+  <!-- LÓGICA DE JAVASCRIPT -->
+  <script>
+    // ESTADO GLOBAL
+    let state = {
+      empresa: 'Empresa Principal S.R.L.',
+      sucursales: [
+        { id: '1', nombre: 'Casa Matriz', activa: true },
+        { id: '2', nombre: 'Sucursal Norte', activa: true },
+        { id: '3', nombre: 'Sucursal Sur', activa: true }
+      ],
+      transacciones: []
+    };
+
+    // NAVEGACIÓN ENTRE SECCIONES
+    function switchTab(tabId) {
+      const views = ['inicio', 'ingresos', 'gastos', 'cierre', 'por-cobrar'];
+      views.forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const btn = document.getElementById(`nav-${v}`);
+        btn.classList.remove('text-brand-primary', 'font-bold');
+        btn.classList.add('text-gray-400');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`nav-${tabId}`);
+      activeBtn.classList.add('text-brand-primary', 'font-bold');
+      activeBtn.classList.remove('text-gray-400');
+
+      renderApp();
+    }
+
+    // MODALES
+    function openSucursalModal() { document.getElementById('modalSucursales').classList.remove('hidden'); }
+    function closeSucursalModal() { document.getElementById('modalSucursales').classList.add('hidden'); }
+    function openEmpresaModal() { document.getElementById('modalEmpresa').classList.remove('hidden'); }
+    function closeEmpresaModal() { document.getElementById('modalEmpresa').classList.add('hidden'); }
+
+    function seleccionarEmpresa(nombre) {
+      state.empresa = nombre;
+      document.getElementById('currentEmpresaName').innerText = nombre;
+      closeEmpresaModal();
+    }
+
+    function crearSucursal() {
+      const input = document.getElementById('nuevaSucursalNombre');
+      if (!input.value.trim()) return;
+      state.sucursales.push({
+        id: Date.now().toString(),
+        nombre: input.value.trim(),
+        activa: true
+      });
+      input.value = '';
+      renderApp();
+    }
+
+    function toggleSucursal(id) {
+      const suc = state.sucursales.find(s => s.id === id);
+      if (suc) suc.activa = !suc.activa;
+      renderApp();
+    }
+
+    // REGISTRO DE DATOS
+    function registrarIngreso(e) {
+      e.preventDefault();
+      const venta = parseFloat(document.getElementById('montoIngreso').value) || 0;
+      const cobrado = parseFloat(document.getElementById('montoCobrado').value) || 0;
+      const sucursalId = document.getElementById('selectSucursalIngreso').value;
+      const concepto = document.getElementById('conceptoIngreso').value || 'Venta de Servicios';
+
+      state.transacciones.push({
+        tipo: 'ingreso',
+        sucursalId,
+        venta,
+        cobrado,
+        concepto,
+        fecha: new Date()
+      });
+
+      document.getElementById('formIngreso').reset();
+      switchTab('inicio');
+    }
+
+    function registrarGasto(e) {
+      e.preventDefault();
+      const monto = parseFloat(document.getElementById('montoGasto').value) || 0;
+      const tipoGasto = document.getElementById('tipoGasto').value;
+      const sucursalId = document.getElementById('selectSucursalGasto').value;
+      const concepto = document.getElementById('conceptoGasto').value || 'Gasto General';
+
+      state.transacciones.push({
+        tipo: 'gasto',
+        subtipo: tipoGasto,
+        sucursalId,
+        monto,
+        concepto,
+        fecha: new Date()
+      });
+
+      document.getElementById('formGasto').reset();
+      switchTab('inicio');
+    }
+
+    // RENDERIZADO GLOBAL DÍNAMICO
+    function renderApp() {
+      const sucursalesActivas = state.sucursales.filter(s => s.activa);
+      document.getElementById('sucursalesCountTag').innerText = `${sucursalesActivas.length} Sucursales`;
+
+      // Selects de formularios
+      const selects = [document.getElementById('selectSucursalIngreso'), document.getElementById('selectSucursalGasto')];
+      selects.forEach(s => {
+        if (!s) return;
+        s.innerHTML = sucursalesActivas.map(suc => `<option value="${suc.id}">${suc.nombre}</option>`).join('');
+      });
+
+      // Render Modal Sucursales
+      const modalList = document.getElementById('listaSucursalesModal');
+      modalList.innerHTML = state.sucursales.map(suc => `
+        <div class="flex items-center justify-between p-3 border rounded-xl bg-gray-50">
+          <span class="text-sm font-bold text-gray-700">${suc.nombre}</span>
+          <button onclick="toggleSucursal('${suc.id}')" class="px-3 py-1 rounded-full text-xs font-bold ${suc.activa ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-500'}">
+            ${suc.activa ? 'Activa' : 'Inactiva'}
+          </button>
+        </div>
+      `).join('');
+
+      // Cálculos Consolidados
+      let totalVentas = 0, totalCobrado = 0, totalGastos = 0, gastosOp = 0, gastosPers = 0;
+      let desgloses = {};
+
+      sucursalesActivas.forEach(s => desgloses[s.id] = { nombre: s.nombre, venta: 0 });
+
+      state.transacciones.forEach(t => {
+        const suc = state.sucursales.find(s => s.id === t.sucursalId);
+        if (suc && suc.activa) {
+          if (t.tipo === 'ingreso') {
+            totalVentas += t.venta;
+            totalCobrado += t.cobrado;
+            if (desgloses[t.sucursalId]) desgloses[t.sucursalId].venta += t.venta;
+          } else if (t.tipo === 'gasto') {
+            totalGastos += t.monto;
+            if (t.subtipo === 'operativo') gastosOp += t.monto;
+            else gastosPers += t.monto;
+          }
+        }
+      });
+
+      // Render Tablero Inicio
+      document.getElementById('dashTotalVentas').innerText = `Bs ${totalVentas.toFixed(2)}`;
+      document.getElementById('dashTotalCobrado').innerText = `Bs ${totalCobrado.toFixed(2)}`;
+      document.getElementById('dashTotalGastos').innerText = `Bs ${totalGastos.toFixed(2)}`;
+      document.getElementById('dashGastosOp').innerText = `Bs ${gastosOp.toFixed(2)}`;
+      document.getElementById('dashGastosPers').innerText = `Bs ${gastosPers.toFixed(2)}`;
+
+      // Render Desglose
+      const desgloseContainer = document.getElementById('desgloseVentasSucursales');
+      desgloseContainer.innerHTML = Object.values(desgloses).map(d => `
+        <div class="flex justify-between py-1.5">
+          <span class="text-gray-600">${d.nombre}</span>
+          <span class="font-bold text-gray-900">Bs ${d.venta.toFixed(2)}</span>
+        </div>
+      `).join('') || '<p class="text-xs text-gray-400 py-2">No hay sucursales activas</p>';
+
+      // Render Cierre
+      document.getElementById('cierreCobrado').innerText = `Bs ${totalCobrado.toFixed(2)}`;
+      document.getElementById('cierreGastos').innerText = `Bs ${totalGastos.toFixed(2)}`;
+      document.getElementById('cierreSaldo').innerText = `Bs ${(totalCobrado - totalGastos).toFixed(2)}`;
+
+      // Render Cuentas Por Cobrar
+      const porCobrar = totalVentas - totalCobrado;
+      document.getElementById('totalPorCobrar').innerText = `Bs ${porCobrar.toFixed(2)}`;
+      document.getElementById('listaPorCobrar').innerHTML = state.transacciones
+        .filter(t => t.tipo === 'ingreso' && (t.venta - t.cobrado) > 0)
+        .map(t => `
+          <div class="flex justify-between items-center p-2 bg-amber-50 rounded border border-amber-100">
+            <div>
+              <p class="font-bold text-gray-800">${t.concepto}</p>
+              <p class="text-xs text-gray-500">${state.sucursales.find(s=>s.id===t.sucursalId)?.nombre || ''}</p>
+            </div>
+            <span class="font-bold text-amber-700">Bs ${(t.venta - t.cobrado).toFixed(2)}</span>
+          </div>
+        `).join('') || '<p class="text-xs text-gray-400 text-center py-2">Sin saldos pendientes por cobrar</p>';
+    }
+
+    // Inicializar
+    renderApp();
+  </script>
 </body>
 </html>
