@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROCABADO AUDITORES CONSULTORES RAC - Sistema de Control Financiero</title>
+    <title>MICKEL ROCABADO • Control Financiero Integral RAC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -29,24 +29,29 @@
         .executive-card { background: #FFFFFF; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(8, 31, 92, 0.08); border: 1px solid #E2E8F0; }
         .gold-badge { background: linear-gradient(135deg, #C5A059 0%, #A37E36 100%); color: white; }
         .glass-header { background: linear-gradient(180deg, #081F5C 0%, #0D2870 100%); }
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .executive-card { border: 1px solid #ccc; box-shadow: none; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-100">
 
-    <!-- PANTALLA DE ACCESO INSTITUCIONAL -->
+    <!-- PANTALLA DE ACCESO INSTITUCIONAL CON DOBLE NIVEL DE SEGURIDAD -->
     <div id="authScreen" class="flex-1 flex flex-col items-center justify-center p-4 bg-[#081F5C]">
         <div class="max-w-md w-full space-y-6 text-center">
             <div class="relative py-4">
                 <div class="inline-block p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md mb-2">
-                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100/081F5C/C5A059?text=RAC';" alt="RAC Logo" class="w-20 h-20 object-contain mx-auto">
+                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/100x100/081F5C/C5A059?text=MR';" alt="Logo" class="w-20 h-20 object-contain mx-auto">
                 </div>
-                <h1 class="text-2xl font-black text-white tracking-wider">ROCABADO</h1>
-                <p class="text-[11px] font-bold text-[#C5A059] tracking-widest uppercase mt-0.5">Auditores Consultores RAC</p>
+                <h1 class="text-2xl font-black text-white tracking-wider">MICKEL ROCABADO</h1>
+                <p class="text-[11px] font-bold text-[#C5A059] tracking-widest uppercase mt-0.5">Control Financiero & Auditoría RAC</p>
                 <p class="text-[11px] italic text-amber-200/90 font-medium mt-1">“Transformando números en decisiones”</p>
                 
                 <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-300">
-                    <span class="font-bold text-white block">Van Joseth Rocabado</span>
-                    <span class="text-[10px] text-[#70A6D1]">Auditor • Asesor Tributario • Analista Financiero</span>
+                    <span class="font-bold text-white block">Rocabado Auditores Consultores</span>
+                    <span class="text-[10px] text-[#70A6D1]">Gestión Financiera Integral • Consultorios y Cuentas Personales</span>
                 </div>
             </div>
 
@@ -55,19 +60,19 @@
                     <div class="flex items-center space-x-3 text-left">
                         <div class="p-2 bg-black/20 rounded-lg"><i class="fa-solid fa-crown text-base"></i></div>
                         <div>
-                            <div>Casa Matriz / Panel Master</div>
-                            <div class="text-[10px] text-amber-100 font-normal">Supervisión Global y Sucursales</div>
+                            <div>Nivel Maestro (Administrador)</div>
+                            <div class="text-[10px] text-amber-100 font-normal">Control total, opera y ve TODO</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
 
-                <button onclick="openLoginModal('empresa')" class="w-full bg-white/10 text-white p-3.5 rounded-xl font-bold border border-white/20 flex items-center justify-between hover:bg-white/25 transition backdrop-blur-sm text-xs">
+                <button onclick="openLoginModal('consulta')" class="w-full bg-white/10 text-white p-3.5 rounded-xl font-bold border border-white/20 flex items-center justify-between hover:bg-white/25 transition backdrop-blur-sm text-xs">
                     <div class="flex items-center space-x-3 text-left">
-                        <div class="p-2 bg-white/10 rounded-lg"><i class="fa-solid fa-building-columns text-base text-[#70A6D1]"></i></div>
+                        <div class="p-2 bg-white/10 rounded-lg"><i class="fa-solid fa-eye text-base text-[#70A6D1]"></i></div>
                         <div>
-                            <div>Ingreso Sucursal Operativa</div>
-                            <div class="text-[10px] text-[#D8E3FF]/70 font-normal">Registro diario de Operadores</div>
+                            <div>Nivel de Consulta (Familia / Lectura)</div>
+                            <div class="text-[10px] text-[#D8E3FF]/70 font-normal">Solo visualización y transparencia</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs"></i>
@@ -76,125 +81,75 @@
         </div>
     </div>
 
-    <!-- MODAL DE LOGIN / SELECCIÓN -->
+    <!-- MODAL DE CONTRASEÑA -->
     <div id="loginModal" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4 relative border border-slate-100">
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-base"></i></button>
             <div class="text-center">
-                <h3 id="modalTitle" class="text-sm font-bold text-[#081F5C]">Acceso al Sistema</h3>
-                <p class="text-[11px] text-slate-500">Credenciales de seguridad</p>
+                <h3 id="modalLoginTitle" class="text-sm font-bold text-[#081F5C]">Acceso de Seguridad</h3>
+                <p class="text-[11px] text-slate-500">Ingrese la contraseña asignada</p>
             </div>
             
             <div class="space-y-3 text-xs">
-                <div id="empresaGroup" class="hidden space-y-3">
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-600 uppercase">Sucursal Operativa</label>
-                        <select id="loginSucursal" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
-                            <option value="Sucursal Pampa">Sucursal Pampa</option>
-                            <option value="Sucursal Villa">Sucursal Villa</option>
-                            <option value="Sucursal Norte">Sucursal Norte</option>
-                        </select>
-                    </div>
-                </div>
+                <input type="hidden" id="loginTypeTarget" value="">
                 <div>
-                    <label class="text-[10px] font-bold text-slate-600 uppercase">Contraseña de Acceso</label>
-                    <input type="password" id="loginPass" placeholder="••••" class="w-full p-2.5 border rounded-xl bg-slate-50">
+                    <label class="text-[10px] font-bold text-slate-600 uppercase">Contraseña</label>
+                    <input type="password" id="loginPassInput" placeholder="••••" class="w-full p-2.5 border rounded-xl bg-slate-50">
                 </div>
-                <button onclick="login()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold shadow-lg hover:bg-[#336AEC] transition">Acceder</button>
+                <button onclick="ejecutarLogin()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold shadow-lg hover:bg-[#336AEC] transition">Verificar Acceso</button>
             </div>
         </div>
     </div>
 
-    <!-- PANEL MASTER / CASA MATRIZ (CONSOLIDADOR GLOBAL) -->
-    <div id="masterScreen" class="hidden flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 gap-3">
-            <div>
-                <span class="text-[10px] font-extrabold text-[#C5A059] uppercase tracking-wider block">Casa Matriz - Panel Master</span>
-                <h1 class="text-xl font-black text-[#081F5C]">Van Joseth Rocabado</h1>
-                <p class="text-xs text-slate-500">Supervisión centralizada y consolidada de todas las sucursales</p>
-            </div>
-            <button onclick="logout()" class="text-xs bg-rose-600 text-white px-3 py-2 rounded-lg font-bold">Cerrar Sesión Master</button>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4">
-            <div class="executive-card p-4 border-l-4 border-[#081F5C]">
-                <div class="text-[11px] text-slate-500 font-semibold">Total Ingresos Consolidados</div>
-                <div class="text-xl font-black text-[#081F5C]" id="masterIngresos">Bs 0.00</div>
-            </div>
-            <div class="executive-card p-4 border-l-4 border-rose-500">
-                <div class="text-[11px] text-slate-500 font-semibold">Total Gastos Consolidados</div>
-                <div class="text-xl font-black text-rose-600" id="masterGastos">Bs 0.00</div>
-            </div>
-            <div class="executive-card p-4 border-l-4 border-emerald-500">
-                <div class="text-[11px] text-slate-500 font-semibold">Utilidad Neta General</div>
-                <div class="text-xl font-black text-emerald-600" id="masterUtilidad">Bs 0.00</div>
-            </div>
-        </div>
-
-        <div class="executive-card p-5 space-y-4">
-            <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Control por Sucursal (Pampa, Villa, Norte)</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs">
-                    <thead class="bg-[#081F5C] text-white">
-                        <tr>
-                            <th class="p-3">Sucursal</th>
-                            <th class="p-3">Servicios Realizados</th>
-                            <th class="p-3">Efectivo / QR</th>
-                            <th class="p-3">Gastos Operativos</th>
-                            <th class="p-3">Utilidad Sucursal</th>
-                        </tr>
-                    </thead>
-                    <tbody id="masterSucursalesList" class="divide-y divide-slate-100">
-                        <!-- Generado dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- SISTEMA OPERATIVO DE SUCURSAL / OPERADOR -->
+    <!-- APLICACIÓN PRINCIPAL -->
     <div id="appScreen" class="hidden flex-1 flex flex-col">
         
-        <!-- HEADER INSTITUCIONAL -->
-        <header class="glass-header text-white shadow-xl sticky top-0 z-30">
-            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/80x80/081F5C/C5A059?text=RAC';" class="w-9 h-9 object-contain rounded-lg bg-white/10 p-1 border border-white/20">
-                    <div>
-                        <div id="headerSucursalTitle" class="text-xs font-extrabold text-[#C5A059] uppercase">Sucursal Pampa</div>
-                        <div class="text-[10px] text-slate-300">Van Joseth Rocabado • RAC Consultores</div>
+        <!-- HEADER INSTITUCIONAL CON SELECTOR DE SUCURSALES -->
+        <header class="glass-header text-white shadow-xl sticky top-0 z-30 no-print">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
+                    <div class="flex items-center space-x-3">
+                        <img src="logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/80x80/081F5C/C5A059?text=MR';" class="w-9 h-9 object-contain rounded-lg bg-white/10 p-1 border border-white/20">
+                        <div>
+                            <div class="text-[10px] font-extrabold text-[#C5A059] uppercase tracking-wider" id="rolBadgeHeader">Modo Maestro</div>
+                            <div class="text-xs font-bold text-white">Mickel Rocabado • RAC Consultores</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="flex items-center gap-2">
-                    <button onclick="abrirCierreCajaModal()" class="bg-amber-600/90 hover:bg-amber-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow transition flex items-center gap-1">
-                        <i class="fa-solid fa-cash-register"></i> Cierre de Caja
+
+                <!-- SELECTOR DE SUCURSAL / UNIDAD -->
+                <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+                    <div class="bg-white/10 p-1 rounded-xl border border-white/20 flex items-center w-full md:w-auto">
+                        <span class="text-[10px] text-amber-200 px-2 font-bold uppercase hidden sm:inline">Unidad:</span>
+                        <select id="selectUnidadNegocio" onchange="cambiarUnidadNegocio()" class="bg-[#081F5C] text-white text-xs font-bold p-2 rounded-lg border border-white/20 outline-none w-full md:w-auto">
+                            <option value="CASA MATRIZ VILLA">CASA MATRIZ VILLA</option>
+                            <option value="SUCURSAL PAMPA ISLA">SUCURSAL PAMPA ISLA</option>
+                            <option value="SUCURSAL SANTIAGUITO">SUCURSAL SANTIAGUITO</option>
+                            <option value="SUCURSAL PERSONAL">SUCURSAL PERSONAL (Mickel)</option>
+                        </select>
+                    </div>
+                    <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-700 text-xs px-3 py-2 rounded-xl font-bold transition text-white" title="Imprimir o Guardar PDF">
+                        <i class="fa-solid fa-print"></i> Imprimir
                     </button>
-                    <button onclick="logout()" class="bg-white/10 hover:bg-rose-600 text-xs px-2.5 py-1.5 rounded-lg font-medium transition">
+                    <button onclick="logout()" class="bg-rose-600 hover:bg-rose-700 text-xs px-3 py-2 rounded-xl font-bold transition text-white">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- NAVEGACIÓN PRINCIPAL ADAPTATIVA -->
+            <!-- NAVEGACIÓN PRINCIPAL EN 4 PESTAÑAS -->
             <nav class="flex border-t border-white/10 overflow-x-auto max-w-6xl mx-auto text-xs">
-                <button onclick="switchTab('tabResumen')" class="tab-btn flex-1 py-3 px-3 text-center font-bold text-[#C5A059] border-b-2 border-[#C5A059] bg-white/5 whitespace-nowrap" id="btn-tabResumen">
-                    <i class="fa-solid fa-chart-line block text-sm mb-1"></i> Resumen
+                <button onclick="switchTab('tabInforme')" class="tab-btn flex-1 py-3 px-3 text-center font-bold text-[#C5A059] border-b-2 border-[#C5A059] bg-white/5 whitespace-nowrap" id="btn-tabInforme">
+                    <i class="fa-solid fa-chart-pie block text-sm mb-1"></i> 1. Informe Ejecutivo
                 </button>
-                <button onclick="switchTab('tabServicios')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabServicios">
-                    <i class="fa-solid fa-list-check block text-sm mb-1"></i> Catálogo Servicios
+                <button onclick="switchTab('tabIngresos')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabIngresos">
+                    <i class="fa-solid fa-file-invoice-dollar block text-sm mb-1"></i> 2. Ingresos y Saldos
                 </button>
-                <button onclick="switchTab('tabAgenda')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabAgenda">
-                    <i class="fa-solid fa-calendar-days block text-sm mb-1"></i> Agenda
+                <button onclick="switchTab('tabLibroMayor')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabLibroMayor">
+                    <i class="fa-solid fa-book block text-sm mb-1"></i> 3. Libro Mayor de Gastos
                 </button>
-                <button onclick="switchTab('tabVentas')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabVentas">
-                    <i class="fa-solid fa-file-invoice-dollar block text-sm mb-1"></i> Ventas / Cobros
-                </button>
-                <button onclick="switchTab('tabGastos')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabGastos">
-                    <i class="fa-solid fa-wallet block text-sm mb-1"></i> Gastos
-                </button>
-                <button onclick="switchTab('tabPersonal')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabPersonal">
-                    <i class="fa-solid fa-user-group block text-sm mb-1"></i> Personal / Planilla
+                <button onclick="switchTab('tabConsolidado')" class="tab-btn flex-1 py-3 px-3 text-center font-medium text-slate-300 hover:text-white whitespace-nowrap" id="btn-tabConsolidado">
+                    <i class="fa-solid fa-building-columns block text-sm mb-1"></i> 4. Consolidado General
                 </button>
             </nav>
         </header>
@@ -202,62 +157,144 @@
         <!-- CONTENIDOS -->
         <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-6">
 
-            <!-- 1. RESUMEN SUCURSAL -->
-            <section id="tabResumen" class="tab-content space-y-4">
+            <!-- 1. INFORME EJECUTIVO (TRANQUILIDAD FAMILIAR) -->
+            <section id="tabInforme" class="tab-content space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h2 class="text-sm font-bold text-[#081F5C]">Resumen Financiero Diario</h2>
-                        <p class="text-[11px] text-slate-500">Balance operativo en tiempo real</p>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Informe Ejecutivo y Liquidez - Mickel Rocabado</h2>
+                        <p class="text-[11px] text-slate-500">Resumen inmediato de fondos disponibles, ingresos y semáforo financiero</p>
                     </div>
-                    <span class="gold-badge text-[10px] px-3 py-1 rounded-full font-bold uppercase">Caja Activa</span>
+                    <button onclick="abrirCierreCaja()" class="no-print bg-amber-600 hover:bg-amber-700 text-white text-xs px-3 py-2 rounded-xl font-bold shadow transition flex items-center gap-1">
+                        <i class="fa-solid fa-cash-register"></i> Cierre de Caja del Día
+                    </button>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="executive-card p-4 border-l-4 border-emerald-500">
+                        <div class="text-[11px] text-slate-500 font-semibold">Fondo / Saldo Inicial</div>
+                        <div class="text-lg font-extrabold text-emerald-700" id="infSaldoInicial">Bs 0.00</div>
+                    </div>
                     <div class="executive-card p-4 border-l-4 border-[#081F5C]">
-                        <div class="text-[11px] text-slate-500 font-semibold">Efectivo en Caja</div>
-                        <div class="text-lg font-extrabold text-[#081F5C]" id="resEfectivo">Bs 0.00</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Total Efectivo en Caja</div>
+                        <div class="text-lg font-extrabold text-[#081F5C]" id="infEfectivo">Bs 0.00</div>
                     </div>
                     <div class="executive-card p-4 border-l-4 border-[#336AEC]">
-                        <div class="text-[11px] text-slate-500 font-semibold">Tarjeta / QR</div>
-                        <div class="text-lg font-extrabold text-[#336AEC]" id="resTarjeta">Bs 0.00</div>
-                    </div>
-                    <div class="executive-card p-4 border-l-4 border-amber-500">
-                        <div class="text-[11px] text-slate-500 font-semibold">Cuentas por Cobrar</div>
-                        <div class="text-lg font-extrabold text-amber-600" id="resPorCobrar">Bs 0.00</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Total QR / Bancos</div>
+                        <div class="text-lg font-extrabold text-[#336AEC]" id="infQr">Bs 0.00</div>
                     </div>
                     <div class="executive-card p-4 border-l-4 border-rose-500">
-                        <div class="text-[11px] text-slate-500 font-semibold">Gastos Operativos</div>
-                        <div class="text-lg font-extrabold text-rose-600" id="resGastos">Bs 0.00</div>
+                        <div class="text-[11px] text-slate-500 font-semibold">Total Gastos Acumulados</div>
+                        <div class="text-lg font-extrabold text-rose-600" id="infGastos">Bs 0.00</div>
                     </div>
-                    <div class="executive-card p-4 border-l-4 border-emerald-500 md:col-span-2">
-                        <div class="text-[11px] text-slate-500 font-semibold">Utilidad Neta Operativa</div>
-                        <div class="text-xl font-black text-emerald-600" id="resUtilidadNeta">Bs 0.00</div>
+                    <div class="executive-card p-4 border-l-4 border-[#C5A059] md:col-span-2">
+                        <div class="text-[11px] text-slate-500 font-semibold">Saldo Disponible Actual (<span id="nombreUnidadActualLabel">CASA MATRIZ VILLA</span>)</div>
+                        <div class="text-xl font-black text-[#081F5C]" id="infSaldoFinal">Bs 0.00</div>
+                    </div>
+                    <div class="executive-card p-4 border-l-4 border-slate-700 md:col-span-2 flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] text-slate-500 font-semibold">Auditoría y Respaldo Digital</div>
+                            <div class="text-sm font-bold text-slate-700" id="infComprobantesCount">0 comprobantes digitalizados</div>
+                        </div>
+                        <span class="gold-badge text-[10px] px-2.5 py-1 rounded-full font-bold">RAC Confiable</span>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. CATÁLOGO DE SERVICIOS (GESTIÓN DE PRECIOS Y COSTOS DIRECTOS) -->
-            <section id="tabServicios" class="tab-content hidden space-y-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h2 class="text-sm font-bold text-[#081F5C]">Catálogo de Servicios RAC</h2>
-                        <p class="text-[11px] text-slate-500">Gestión de precios, costos y tarifas oficiales</p>
+            <!-- 2. INGRESOS Y SALDOS -->
+            <section id="tabIngresos" class="tab-content hidden space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Formulario de Ingresos -->
+                    <div class="executive-card p-5 space-y-4 master-only no-print">
+                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Registrar Ingreso o Fondo Inicial</h3>
+                        
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Tipo de Registro</label>
+                            <select id="ingTipo" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
+                                <option value="Ingreso por Cobranza / Venta">Ingreso por Cobranza / Venta Diaria</option>
+                                <option value="Saldo Inicial de Caja">Saldo Inicial de Caja (Fondo)</option>
+                                <option value="Depósito / Transferencia Externa">Depósito / Transferencia Externa</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Fecha del Ingreso</label>
+                            <input type="date" id="ingFecha" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Forma de Recepción</label>
+                            <select id="ingMetodo" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="QR / Transferencia">QR / Transferencia Bancaria</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Monto (Bs)</label>
+                            <input type="number" id="ingMonto" placeholder="0.00" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-bold text-emerald-600">
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Glosa / Detalle</label>
+                            <input type="text" id="ingObservacion" placeholder="Ej. Cuadre de ingresos del día..." class="w-full p-2.5 border rounded-xl text-xs bg-slate-50">
+                        </div>
+
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-600 uppercase">Adjuntar Comprobante (Foto)</label>
+                            <input type="file" id="ingFoto" accept="image/*" class="w-full p-2 border rounded-xl text-xs bg-slate-50">
+                        </div>
+
+                        <button onclick="guardarIngreso()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar Ingreso</button>
                     </div>
-                    <button onclick="toggleModal('nuevoServicioModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow hover:bg-[#336AEC] transition">+ Nuevo Servicio</button>
+
+                    <!-- Historial de Ingresos -->
+                    <div class="executive-card p-5 space-y-4 flex flex-col">
+                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Historial de Ingresos (<span class="unidad-nombre-ref">CASA MATRIZ VILLA</span>)</h3>
+                        <div class="flex-1 overflow-y-auto max-h-[450px] space-y-2 text-xs" id="listaIngresosHistorial">
+                            <span class="text-slate-400 italic">No hay ingresos registrados en esta unidad.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. LIBRO MAYOR DE GASTOS -->
+            <section id="tabLibroMayor" class="tab-content hidden space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                    <div>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Libro Mayor Auxiliar de Gastos</h2>
+                        <p class="text-[11px] text-slate-500">Incluye sueldos, alquileres, insumos, salud, préstamo de auto y servicios personales</p>
+                    </div>
+                    <button onclick="abrirModalGasto()" class="master-only no-print bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded-xl text-xs font-bold shadow transition">+ Registrar Nuevo Gasto</button>
                 </div>
 
+                <!-- FILTRO POR CUENTA / CLASIFICACIÓN -->
+                <div class="executive-card p-4 flex flex-wrap gap-2 items-center text-xs no-print">
+                    <span class="font-bold text-slate-600 uppercase text-[10px]">Filtrar Cuenta:</span>
+                    <button onclick="filtrarLibroMayor('Todos')" class="px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white btn-filtro-lm" data-cuenta="Todos">Todas</button>
+                    <button onclick="filtrarLibroMayor('Gastos Médicos y Salud')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Gastos Médicos y Salud">Salud y Medicamentos</button>
+                    <button onclick="filtrarLibroMayor('Alquiler de Cuarto / Oficina')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Alquiler de Cuarto / Oficina">Alquileres</button>
+                    <button onclick="filtrarLibroMayor('Servicios Básicos')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Servicios Básicos">Servicios Básicos</button>
+                    <button onclick="filtrarLibroMayor('Préstamo Automóvil')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Préstamo Automóvil">Préstamo Auto</button>
+                    <button onclick="filtrarLibroMayor('Mantenimiento y Gasolina Auto')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Mantenimiento y Gasolina Auto">Gasolina / Auto</button>
+                    <button onclick="filtrarLibroMayor('Sueldos y Comisiones')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Sueldos y Comisiones">Sueldos</button>
+                    <button onclick="filtrarLibroMayor('Insumos y Mercadería')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Insumos y Mercadería">Insumos</button>
+                </div>
+
+                <!-- TABLA DEL LIBRO MAYOR -->
                 <div class="executive-card overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead class="bg-[#081F5C] text-white font-bold">
                                 <tr>
-                                    <th class="p-3">Servicio</th>
-                                    <th class="p-3">Costo Directo (Bs)</th>
-                                    <th class="p-3">Precio Venta (Bs)</th>
-                                    <th class="p-3 text-right">Acciones</th>
+                                    <th class="p-3">Fecha</th>
+                                    <th class="p-3">Categoría / Cuenta</th>
+                                    <th class="p-3">Glosa / Detalle</th>
+                                    <th class="p-3">Pago</th>
+                                    <th class="p-3">Comprobante</th>
+                                    <th class="p-3 text-right">Monto (Bs)</th>
                                 </tr>
                             </thead>
-                            <tbody id="serviciosCatalogoList" class="divide-y divide-slate-100">
+                            <tbody id="libroMayorList" class="divide-y divide-slate-100">
                                 <!-- Generado dinámicamente -->
                             </tbody>
                         </table>
@@ -265,163 +302,47 @@
                 </div>
             </section>
 
-            <!-- 3. AGENDA Y CITAS -->
-            <section id="tabAgenda" class="tab-content hidden space-y-4">
-                <div class="flex justify-between items-center">
+            <!-- 4. CONSOLIDADO GENERAL -->
+            <section id="tabConsolidado" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
                     <div>
-                        <h2 class="text-sm font-bold text-[#081F5C]">Agenda de Citas y Servicios</h2>
-                        <p class="text-[11px] text-slate-500">Asignación de personal y notificación por WhatsApp</p>
+                        <h2 class="text-sm font-bold text-[#081F5C]">Consolidado Financiero General - Mickel Rocabado</h2>
+                        <p class="text-[11px] text-slate-500">Transparencia global de consultorios y cuenta personal</p>
                     </div>
-                    <button onclick="toggleModal('agendaModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow hover:bg-[#336AEC] transition">+ Agendar Cita</button>
+                    <span class="gold-badge text-[10px] px-3 py-1 rounded-full font-bold uppercase">Auditoría RAC</span>
                 </div>
 
-                <div class="executive-card overflow-hidden">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="executive-card p-4 border-l-4 border-[#081F5C]">
+                        <div class="text-[11px] text-slate-500 font-semibold">Total Ingresos Globales</div>
+                        <div class="text-xl font-black text-[#081F5C]" id="consTotalIngresos">Bs 0.00</div>
+                    </div>
+                    <div class="executive-card p-4 border-l-4 border-rose-500">
+                        <div class="text-[11px] text-slate-500 font-semibold">Total Egresos Globales</div>
+                        <div class="text-xl font-black text-rose-600" id="consTotalGastos">Bs 0.00</div>
+                    </div>
+                    <div class="executive-card p-4 border-l-4 border-emerald-500">
+                        <div class="text-[11px] text-slate-500 font-semibold">Saldo Neto Consolidado</div>
+                        <div class="text-xl font-black text-emerald-600" id="consTotalNeto">Bs 0.00</div>
+                    </div>
+                </div>
+
+                <div class="executive-card p-5 space-y-4">
+                    <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Desglose por Sucursal y Cuenta Personal</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
-                            <thead class="bg-[#081F5C] text-white font-bold">
+                            <thead class="bg-[#081F5C] text-white">
                                 <tr>
-                                    <th class="p-3">Cliente / Teléfono</th>
-                                    <th class="p-3">Servicio</th>
-                                    <th class="p-3">Personal Asignado</th>
-                                    <th class="p-3 text-right">Acciones</th>
+                                    <th class="p-3">Unidad / Sucursal</th>
+                                    <th class="p-3">Fondo Inicial</th>
+                                    <th class="p-3">Ingresos Totales</th>
+                                    <th class="p-3">Gastos Totales</th>
+                                    <th class="p-3">Saldo en Caja</th>
                                 </tr>
                             </thead>
-                            <tbody id="agendaList" class="divide-y divide-slate-100"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. VENTAS Y COBROS (CON HISTORIAL DE SERVICIOS REALIZADOS) -->
-            <section id="tabVentas" class="tab-content hidden space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Formulario de Venta -->
-                    <div class="executive-card p-5 space-y-4">
-                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Registrar Nueva Venta / Servicio</h3>
-                        
-                        <div class="relative">
-                            <label class="text-[10px] font-bold text-slate-600 uppercase">Buscar Servicio del Catálogo</label>
-                            <input type="text" id="vtaBuscador" oninput="filtrarServiciosVenta()" placeholder="Escriba nombre del servicio..." class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
-                            <div id="vtaResultadosBusqueda" class="absolute left-0 right-0 top-full bg-white border rounded-xl shadow-xl max-h-40 overflow-y-auto hidden z-20 mt-1 divide-y divide-slate-100"></div>
-                        </div>
-
-                        <div class="p-3 bg-slate-50 rounded-xl border flex justify-between items-center text-xs">
-                            <div>
-                                <span class="text-[9px] font-bold text-slate-400 uppercase block">Seleccionado:</span>
-                                <span id="vtaServicioSeleccionadoTexto" class="font-bold text-[#081F5C]">Ninguno</span>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[9px] font-bold text-slate-400 uppercase block">Precio:</span>
-                                <span id="vtaPrecioTexto" class="font-bold text-emerald-600">Bs 0.00</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-600 uppercase">Personal Ejecutor</label>
-                            <select id="vtaPersonal" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium"></select>
-                        </div>
-
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-600 uppercase">Forma de Pago</label>
-                            <select id="vtaMetodo" class="w-full p-2.5 border rounded-xl text-xs bg-slate-50 font-medium">
-                                <option value="Efectivo">Efectivo</option>
-                                <option value="Tarjeta/QR">Tarjeta / Transferencia QR</option>
-                                <option value="Por Cobrar">Cuenta por Cobrar (Deudor)</option>
-                            </select>
-                        </div>
-
-                        <button onclick="guardarVenta()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar y Cobrar</button>
-                    </div>
-
-                    <!-- Historial de Servicios Realizados -->
-                    <div class="executive-card p-5 space-y-4 flex flex-col">
-                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Historial de Ventas y Servicios Ejecutados</h3>
-                        <div class="flex-1 overflow-y-auto max-h-96 space-y-2 text-xs" id="historialVentasList">
-                            <span class="text-slate-400 italic">No hay ventas registradas aún hoy.</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. GASTOS OPERATIVOS Y PERSONALES (CON MÉTODO DE PAGO EFECTIVO / QR) -->
-            <section id="tabGastos" class="tab-content hidden space-y-4 max-w-lg mx-auto">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-sm font-bold text-[#081F5C]">Registro de Gastos</h2>
-                    <button onclick="toggleModal('nuevaCategoriaModal')" class="text-xs font-bold text-[#336AEC] hover:underline">+ Categoría</button>
-                </div>
-
-                <div class="executive-card p-5 space-y-4 text-xs">
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-600 uppercase">Categoría de Gasto</label>
-                        <select id="gstCategoria" onchange="evaluarGastoPersonal()" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
-                            <option value="Servicios Básicos">Servicios Básicos (Luz, Agua, Teléfono)</option>
-                            <option value="Alquiler">Alquiler</option>
-                            <option value="Materiales">Materiales e Insumos</option>
-                            <option value="Mantenimiento">Mantenimiento</option>
-                            <option value="Impuestos">Impuestos y Tasas</option>
-                            <option value="Gastos Personales">Gastos Personales del Propietario</option>
-                        </select>
-                    </div>
-
-                    <div id="subGastoPersonalGroup" class="hidden p-3 bg-purple-50 rounded-xl border border-purple-200 space-y-1">
-                        <label class="text-[10px] font-bold text-purple-900 uppercase block">Subcategoría Personal</label>
-                        <select id="gstSubPersonal" class="w-full p-2 border rounded-lg bg-white font-medium text-purple-900">
-                            <option value="Hijos">Hijos / Familia</option>
-                            <option value="Alimentos">Alimentos y Mercado</option>
-                            <option value="Salud">Salud y Medicamentos</option>
-                            <option value="Varios">Varios Personales</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-600 uppercase">Método de Pago del Gasto</label>
-                        <select id="gstMetodoPago" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
-                            <option value="Efectivo">Efectivo (Caja)</option>
-                            <option value="QR/Transferencia">Transferencia QR / Banco</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-600 uppercase">Concepto / Detalle</label>
-                        <input type="text" id="gstDetalle" placeholder="Detalle del egreso..." class="w-full p-2.5 border rounded-xl bg-slate-50">
-                    </div>
-
-                    <div>
-                        <label class="text-[10px] font-bold text-slate-600 uppercase">Monto (Bs)</label>
-                        <input type="number" id="gstMonto" placeholder="0.00" class="w-full p-2.5 border rounded-xl bg-slate-50 font-bold text-rose-600">
-                    </div>
-
-                    <button onclick="guardarGasto()" class="w-full bg-rose-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-rose-700 transition">Registrar Gasto</button>
-                </div>
-            </section>
-
-            <!-- 6. PERSONAL Y PLANILLA DE COMISIONES Y UTILIDAD -->
-            <section id="tabPersonal" class="tab-content hidden space-y-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h2 class="text-sm font-bold text-[#081F5C]">Planilla de Personal y Comisiones</h2>
-                        <p class="text-[11px] text-slate-500">Servicios realizados, ingresos generados, costos directos y utilidad</p>
-                    </div>
-                    <div class="flex space-x-2">
-                        <button onclick="window.print()" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-bold shadow"><i class="fa-solid fa-print"></i> Imprimir Planilla</button>
-                        <button onclick="toggleModal('personalModal')" class="bg-[#081F5C] text-white px-3 py-2 rounded-xl text-xs font-bold shadow">+ Personal</button>
-                    </div>
-                </div>
-
-                <div class="executive-card overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs">
-                            <thead class="bg-[#081F5C] text-white font-bold">
-                                <tr>
-                                    <th class="p-3">Nombre del Personal</th>
-                                    <th class="p-3">Teléfono</th>
-                                    <th class="p-3">% Comisión</th>
-                                    <th class="p-3 text-center">Servicios Hechos</th>
-                                    <th class="p-3">Ingresos Generados</th>
-                                    <th class="p-3">Comisión a Pagar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="personalList" class="divide-y divide-slate-100"></tbody>
+                            <tbody id="consUnidadesList" class="divide-y divide-slate-100">
+                                <!-- Dinámico -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -430,114 +351,107 @@
         </main>
     </div>
 
-    <!-- MODALES DE CREACIÓN Y EDICIÓN -->
-    <div id="agendaModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
-            <h3 class="font-bold text-[#081F5C] text-sm">Agendar Cita / Servicio</h3>
-            <input type="text" id="agCliente" placeholder="Nombre del Cliente" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="text" id="agTel" placeholder="Celular (Ej. 59170012345)" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="text" id="agServicio" placeholder="Servicio requerido" class="w-full p-2.5 border rounded-xl bg-slate-50">
+    <!-- MODAL DE REGISTRO DE GASTO -->
+    <div id="modalGasto" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 space-y-3 text-xs shadow-2xl">
+            <h3 class="font-bold text-[#081F5C] text-sm">Registrar Gasto (Libro Mayor)</h3>
+            
             <div>
-                <label class="text-[10px] font-bold text-slate-600 uppercase">Personal Asignado</label>
-                <select id="agPersonal" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium"></select>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Cuenta / Categoría</label>
+                <select id="gstCategoria" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
+                    <option value="Gastos Médicos y Salud">Gastos Médicos y Salud (Hospital, Medicamentos, Exámenes)</option>
+                    <option value="Alquiler de Cuarto / Oficina">Alquiler de Cuarto / Oficina</option>
+                    <option value="Servicios Básicos">Servicios Básicos (Luz, Agua, Internet)</option>
+                    <option value="Préstamo Automóvil">Préstamo Automóvil</option>
+                    <option value="Mantenimiento y Gasolina Auto">Mantenimiento y Gasolina Auto</option>
+                    <option value="Sueldos y Comisiones">Sueldos y Comisiones</option>
+                    <option value="Insumos y Mercadería">Insumos y Mercadería</option>
+                </select>
             </div>
+
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Fecha</label>
+                <input type="date" id="gstFecha" class="w-full p-2.5 border rounded-xl bg-slate-50">
+            </div>
+
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Forma de Pago</label>
+                <select id="gstMetodoPago" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Tarjeta / QR">Tarjeta / Transferencia Bancaria</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Glosa / Detalle</label>
+                <input type="text" id="gstDetalle" placeholder="Ej. Compra de medicamentos o pago de alquiler..." class="w-full p-2.5 border rounded-xl bg-slate-50">
+            </div>
+
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Monto (Bs)</label>
+                <input type="number" id="gstMonto" placeholder="0.00" class="w-full p-2.5 border rounded-xl bg-slate-50 font-bold text-rose-600">
+            </div>
+
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Adjuntar Receta / Factura / Recibo (Foto)</label>
+                <input type="file" id="gstFoto" accept="image/*" class="w-full p-2 border rounded-xl bg-slate-50">
+            </div>
+
             <div class="flex space-x-2 pt-2">
-                <button onclick="guardarAgenda()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Agendar</button>
-                <button onclick="toggleModal('agendaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
+                <button onclick="guardarGasto()" class="flex-1 bg-rose-600 text-white py-2.5 rounded-xl font-bold">Guardar Gasto</button>
+                <button onclick="toggleModalGasto()" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
 
-    <div id="personalModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
-            <h3 class="font-bold text-[#081F5C] text-sm">Registrar Personal</h3>
-            <input type="text" id="perNombre" placeholder="Nombre Completo" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="text" id="perTel" placeholder="Teléfono" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="number" id="perComision" placeholder="% Comisión" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <div class="flex space-x-2 pt-2">
-                <button onclick="guardarPersonal()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
-                <button onclick="toggleModal('personalModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="nuevoServicioModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
-            <h3 class="font-bold text-[#081F5C] text-sm" id="modalServicioTitulo">Crear / Editar Servicio</h3>
-            <input type="hidden" id="nsIndex" value="-1">
-            <input type="text" id="nsNombre" placeholder="Nombre del Servicio" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="number" id="nsCosto" placeholder="Costo Directo (Bs)" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <input type="number" id="nsPrecio" placeholder="Precio Venta (Bs)" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <div class="flex space-x-2 pt-2">
-                <button onclick="guardarServicioCatalogo()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
-                <button onclick="toggleModal('nuevoServicioModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="nuevaCategoriaModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs">
-            <h3 class="font-bold text-[#081F5C] text-sm">Nueva Categoría de Gasto</h3>
-            <input type="text" id="ncNombre" placeholder="Nombre Categoría" class="w-full p-2.5 border rounded-xl bg-slate-50">
-            <div class="flex space-x-2 pt-2">
-                <button onclick="guardarCategoriaGasto()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Guardar</button>
-                <button onclick="toggleModal('nuevaCategoriaModal')" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE CIERRE DE CAJA / TURNO -->
-    <div id="cierreCajaModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 text-xs">
+    <!-- MODAL DE CIERRE DE CAJA -->
+    <div id="modalCierre" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 text-xs shadow-2xl">
             <div class="text-center border-b pb-3">
-                <h3 class="font-black text-[#081F5C] text-sm">CIERRE DE CAJA / TURNO</h3>
-                <p class="text-[10px] text-slate-500" id="cierreSucursalLabel">Sucursal Pampa</p>
+                <h3 class="font-black text-[#081F5C] text-sm">CIERRE DE CAJA DEL DÍA</h3>
+                <p class="text-[10px] text-slate-500" id="cierreUnidadLabel">Unidad</p>
             </div>
             
-            <div class="space-y-2 bg-slate-50 p-3 rounded-xl border">
-                <div class="flex justify-between"><span>Efectivo Recaudado:</span> <strong id="cierreEfectivo">Bs 0.00</strong></div>
-                <div class="flex justify-between"><span>QR / Transferencias:</span> <strong id="cierreQr">Bs 0.00</strong></div>
-                <div class="flex justify-between"><span>Cuentas por Cobrar:</span> <strong id="cierrePorCobrar">Bs 0.00</strong></div>
-                <div class="flex justify-between border-t pt-2 text-rose-600"><span>Menos Gastos Operativos:</span> <strong id="cierreGastos">Bs 0.00</strong></div>
-                <div class="flex justify-between border-t pt-2 font-black text-[#081F5C] text-sm"><span>Total Cierre Efectivo:</span> <strong id="cierreTotal">Bs 0.00</strong></div>
+            <div class="space-y-2 bg-slate-50 p-3 rounded-xl border font-medium">
+                <div class="flex justify-between"><span>Saldo Inicial:</span> <strong id="cieSaldoInicial">Bs 0.00</strong></div>
+                <div class="flex justify-between"><span>Ingresos Efectivo:</span> <strong id="cieEfectivo">Bs 0.00</strong></div>
+                <div class="flex justify-between"><span>Ingresos QR / Banco:</span> <strong id="cieQr">Bs 0.00</strong></div>
+                <div class="flex justify-between text-rose-600 border-t pt-2"><span>Total Gastos / Egresos:</span> <strong id="cieGastos">Bs 0.00</strong></div>
+                <div class="flex justify-between border-t pt-2 font-black text-[#081F5C] text-sm"><span>Saldo Disponible en Caja:</span> <strong id="cieTotal">Bs 0.00</strong></div>
             </div>
 
             <div class="flex space-x-2 pt-2">
-                <button onclick="ejecutarCierreTurno()" class="flex-1 bg-amber-600 text-white py-3 rounded-xl font-bold">Confirmar y Cerrar Turno</button>
-                <button onclick="toggleModal('cierreCajaModal')" class="flex-1 bg-slate-200 py-3 rounded-xl font-bold text-slate-600">Cancelar</button>
+                <button onclick="toggleModalCierre()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold">Cerrar Reporte</button>
             </div>
         </div>
     </div>
 
-    <!-- LÓGICA JAVASCRIPT INTEGRADA -->
+    <!-- SCRIPT DE LÓGICA Y CONTROL FINANCIERO -->
     <script>
         let state = {
-            sucursalActual: 'Sucursal Pampa',
-            serviciosCatalogo: [
-                { id: 1, nombre: 'Auditoría Financiera General', costo: 200, precio: 1000 },
-                { id: 2, nombre: 'Asesoría Tributaria Mensual', costo: 50, precio: 400 },
-                { id: 3, nombre: 'Certificación Contable', costo: 80, precio: 500 }
-            ],
-            servicioSeleccionadoVenta: null,
-            personal: [
-                { id: 1, nombre: 'Juan Pérez', tel: '70012345', porc: 10, servCount: 0, ingresosGen: 0 },
-                { id: 2, nombre: 'María López', tel: '70098765', porc: 15, servCount: 0, ingresosGen: 0 }
-            ],
-            agenda: [],
-            ventas: [],
-            gastos: []
+            rol: 'master', // 'master' o 'consulta'
+            unidadActual: 'CASA MATRIZ VILLA',
+            filtroCuentaLm: 'Todos',
+            unidades: {
+                'CASA MATRIZ VILLA': { saldoInicial: 20000, ingresos: [], gastos: [] },
+                'SUCURSAL PAMPA ISLA': { saldoInicial: 0, ingresos: [], gastos: [] },
+                'SUCURSAL SANTIAGUITO': { saldoInicial: 0, ingresos: [], gastos: [] },
+                'SUCURSAL PERSONAL': { saldoInicial: 0, ingresos: [], gastos: [] }
+            }
         };
 
-        function openLoginModal(role) {
-            if(role === 'master') {
-                document.getElementById('authScreen').classList.add('hidden');
-                document.getElementById('masterScreen').classList.remove('hidden');
-                renderMaster();
-            } else {
-                document.getElementById('empresaGroup').classList.remove('hidden');
-                document.getElementById('loginModal').classList.remove('hidden');
-                document.getElementById('loginModal').classList.add('flex');
-            }
+        window.onload = function() {
+            const hoy = new Date().toISOString().split('T')[0];
+            if(document.getElementById('ingFecha')) document.getElementById('ingFecha').value = hoy;
+            if(document.getElementById('gstFecha')) document.getElementById('gstFecha').value = hoy;
+        };
+
+        function openLoginModal(rol) {
+            document.getElementById('loginTypeTarget').value = rol;
+            document.getElementById('modalLoginTitle').innerText = rol === 'master' ? 'Acceso Nivel Maestro' : 'Acceso Nivel Consulta';
+            document.getElementById('loginPassInput').value = '';
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
         }
 
         function closeLoginModal() {
@@ -545,19 +459,51 @@
             document.getElementById('loginModal').classList.remove('flex');
         }
 
-        function login() {
-            state.sucursalActual = document.getElementById('loginSucursal').value;
-            document.getElementById('headerSucursalTitle').innerText = state.sucursalActual;
+        function ejecutarLogin() {
+            const pass = document.getElementById('loginPassInput').value;
+            const rolTarget = document.getElementById('loginTypeTarget').value;
+
+            if(rolTarget === 'master' && pass === 'rac2026*') {
+                state.rol = 'master';
+            } else if(rolTarget === 'consulta' && pass === 'familia2026') {
+                state.rol = 'consulta';
+            } else {
+                alert('Contraseña incorrecta. Intente nuevamente.');
+                return;
+            }
+
+            closeLoginModal();
             document.getElementById('authScreen').classList.add('hidden');
             document.getElementById('appScreen').classList.remove('hidden');
-            closeLoginModal();
+            
+            aplicarPermisosRol();
             renderAll();
         }
 
         function logout() {
             document.getElementById('appScreen').classList.add('hidden');
-            document.getElementById('masterScreen').classList.add('hidden');
             document.getElementById('authScreen').classList.remove('hidden');
+        }
+
+        function aplicarPermisosRol() {
+            const badge = document.getElementById('rolBadgeHeader');
+            const elementosMaster = document.querySelectorAll('.master-only');
+            if(state.rol === 'consulta') {
+                badge.innerText = "Modo Consulta (Solo Lectura)";
+                badge.className = "text-[10px] font-extrabold text-amber-300 uppercase tracking-wider";
+                elementosMaster.forEach(el => el.classList.add('hidden'));
+            } else {
+                badge.innerText = "Modo Maestro (Administrador)";
+                badge.className = "text-[10px] font-extrabold text-[#C5A059] uppercase tracking-wider";
+                elementosMaster.forEach(el => el.classList.remove('hidden'));
+            }
+        }
+
+        function cambiarUnidadNegocio() {
+            state.unidadActual = document.getElementById('selectUnidadNegocio').value;
+            document.querySelectorAll('.unidad-nombre-ref').forEach(el => el.innerText = state.unidadActual);
+            document.getElementById('nombreUnidadActualLabel').innerText = state.unidadActual;
+            renderAll();
         }
 
         function switchTab(tabId) {
@@ -570,329 +516,248 @@
             const activeBtn = document.getElementById('btn-' + tabId);
             activeBtn.classList.add('text-[#C5A059]', 'border-b-2', 'border-[#C5A059]', 'bg-white/5');
             activeBtn.classList.remove('text-slate-300');
+            
+            if(tabId === 'tabConsolidado') renderConsolidado();
         }
 
-        function toggleModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.toggle('hidden');
-            modal.classList.toggle('flex');
+        function abrirModalGasto() {
+            document.getElementById('modalGasto').classList.remove('hidden');
+            document.getElementById('modalGasto').classList.add('flex');
         }
 
-        // GESTIÓN DE SERVICIOS
-        function renderServiciosCatalogo() {
-            const tbody = document.getElementById('serviciosCatalogoList');
-            tbody.innerHTML = '';
-            state.serviciosCatalogo.forEach((s, idx) => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="p-3 font-bold text-[#081F5C]">${s.nombre}</td>
-                        <td class="p-3">Bs ${s.costo.toFixed(2)}</td>
-                        <td class="p-3 font-semibold text-emerald-600">Bs ${s.precio.toFixed(2)}</td>
-                        <td class="p-3 text-right">
-                            <button onclick="editarServicio(${idx})" class="text-[#336AEC] font-bold px-2 py-1 bg-blue-50 rounded"><i class="fa-solid fa-pen"></i> Editar</button>
-                        </td>
-                    </tr>
-                `;
+        function toggleModalGasto() {
+            document.getElementById('modalGasto').classList.toggle('hidden');
+            document.getElementById('modalGasto').classList.toggle('flex');
+        }
+
+        function abrirCierreCaja() {
+            const unidad = state.unidades[state.unidadActual];
+            let efec = 0, qr = 0, gst = 0;
+            unidad.ingresos.forEach(i => {
+                if(i.metodo === 'Efectivo') efec += i.monto;
+                else qr += i.monto;
             });
+            unidad.gastos.forEach(g => gst += g.monto);
+
+            const totalCaja = unidad.saldoInicial + efec + qr - gst;
+
+            document.getElementById('cierreUnidadLabel').innerText = state.unidadActual;
+            document.getElementById('cieSaldoInicial').innerText = `Bs ${unidad.saldoInicial.toFixed(2)}`;
+            document.getElementById('cieEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
+            document.getElementById('cieQr').innerText = `Bs ${qr.toFixed(2)}`;
+            document.getElementById('cieGastos').innerText = `Bs ${gst.toFixed(2)}`;
+            document.getElementById('cieTotal').innerText = `Bs ${totalCaja.toFixed(2)}`;
+
+            document.getElementById('modalCierre').classList.remove('hidden');
+            document.getElementById('modalCierre').classList.add('flex');
         }
 
-        function editarServicio(idx) {
-            const s = state.serviciosCatalogo[idx];
-            document.getElementById('nsIndex').value = idx;
-            document.getElementById('nsNombre').value = s.nombre;
-            document.getElementById('nsCosto').value = s.costo;
-            document.getElementById('nsPrecio').value = s.precio;
-            document.getElementById('modalServicioTitulo').innerText = "Editar Servicio";
-            toggleModal('nuevoServicioModal');
+        function toggleModalCierre() {
+            document.getElementById('modalCierre').classList.toggle('hidden');
+            document.getElementById('modalCierre').classList.toggle('flex');
         }
 
-        function guardarServicioCatalogo() {
-            const idx = parseInt(document.getElementById('nsIndex').value);
-            const nombre = document.getElementById('nsNombre').value;
-            const costo = parseFloat(document.getElementById('nsCosto').value) || 0;
-            const precio = parseFloat(document.getElementById('nsPrecio').value) || 0;
+        function guardarIngreso() {
+            const tipo = document.getElementById('ingTipo').value;
+            const fecha = document.getElementById('ingFecha').value;
+            const metodo = document.getElementById('ingMetodo').value;
+            const monto = parseFloat(document.getElementById('ingMonto').value) || 0;
+            const observacion = document.getElementById('ingObservacion').value;
+            const fileInput = document.getElementById('ingFoto');
 
-            if(!nombre || !precio) return alert('Ingrese nombre y precio de venta');
+            if(!monto) return alert('Ingrese un monto válido.');
 
-            if(idx === -1) {
-                state.serviciosCatalogo.push({ id: Date.now(), nombre, costo, precio });
-            } else {
-                state.serviciosCatalogo[idx] = { ...state.serviciosCatalogo[idx], nombre, costo, precio };
+            let fotoUrl = '';
+            if(fileInput.files && fileInput.files[0]) {
+                fotoUrl = URL.createObjectURL(fileInput.files[0]);
             }
 
-            document.getElementById('nsIndex').value = '-1';
-            document.getElementById('nsNombre').value = '';
-            document.getElementById('nsCosto').value = '';
-            document.getElementById('nsPrecio').value = '';
-            document.getElementById('modalServicioTitulo').innerText = "Crear / Editar Servicio";
-            toggleModal('nuevoServicioModal');
-            renderServiciosCatalogo();
-        }
-
-        // BÚSQUEDA EN VENTAS
-        function filtrarServiciosVenta() {
-            const query = document.getElementById('vtaBuscador').value.toLowerCase();
-            const resDiv = document.getElementById('vtaResultadosBusqueda');
-            if(!query) { resDiv.classList.add('hidden'); return; }
-
-            const filtrados = state.serviciosCatalogo.filter(s => s.nombre.toLowerCase().includes(query));
-            resDiv.innerHTML = '';
-            if(filtrados.length === 0) {
-                resDiv.innerHTML = `<div class="p-3 text-slate-400">Sin coincidencias</div>`;
-            } else {
-                filtrados.forEach(s => {
-                    resDiv.innerHTML += `
-                        <div onclick="seleccionarServicioVenta(${s.id})" class="p-3 hover:bg-slate-50 cursor-pointer flex justify-between">
-                            <span class="font-bold text-[#081F5C]">${s.nombre}</span>
-                            <span class="font-semibold text-emerald-600">Bs ${s.precio}</span>
-                        </div>
-                    `;
-                });
-            }
-            resDiv.classList.remove('hidden');
-        }
-
-        function seleccionarServicioVenta(id) {
-            const s = state.serviciosCatalogo.find(x => x.id === id);
-            if(!s) return;
-            state.servicioSeleccionadoVenta = s;
-            document.getElementById('vtaBuscador').value = s.nombre;
-            document.getElementById('vtaServicioSeleccionadoTexto').innerText = s.nombre;
-            document.getElementById('vtaPrecioTexto').innerText = `Bs ${s.precio.toFixed(2)}`;
-            document.getElementById('vtaResultadosBusqueda').classList.add('hidden');
-        }
-
-        function guardarVenta() {
-            if(!state.servicioSeleccionadoVenta) return alert('Seleccione un servicio del catálogo');
-            const personalId = parseInt(document.getElementById('vtaPersonal').value);
-            const metodo = document.getElementById('vtaMetodo').value;
-            const s = state.servicioSeleccionadoVenta;
-
-            const p = state.personal.find(x => x.id === personalId);
-            let comision = 0;
-            if(p) {
-                const margen = s.precio - s.costo;
-                if(margen > 0) comision = (margen * p.porc) / 100;
-                p.servCount += 1;
-                p.ingresosGen += s.precio;
+            const unidad = state.unidades[state.unidadActual];
+            if(tipo === 'Saldo Inicial de Caja') {
+                unidad.saldoInicial = monto;
             }
 
-            state.ventas.push({
+            unidad.ingresos.push({
                 id: Date.now(),
-                sucursal: state.sucursalActual,
-                servicio: s.nombre,
-                personal: p ? p.nombre : 'General',
-                precio: s.precio,
-                costo: s.costo,
+                tipo,
+                fecha,
                 metodo,
-                comision
+                monto,
+                observacion,
+                foto: fotoUrl
             });
 
-            state.servicioSeleccionadoVenta = null;
-            document.getElementById('vtaBuscador').value = '';
-            document.getElementById('vtaServicioSeleccionadoTexto').innerText = 'Ninguno';
-            document.getElementById('vtaPrecioTexto').innerText = 'Bs 0.00';
+            document.getElementById('ingMonto').value = '';
+            document.getElementById('ingObservacion').value = '';
+            document.getElementById('ingFoto').value = '';
 
-            alert('Venta registrada con éxito');
+            alert('Ingreso registrado exitosamente.');
             renderAll();
-        }
-
-        function evaluarGastoPersonal() {
-            const cat = document.getElementById('gstCategoria').value;
-            const group = document.getElementById('subGastoPersonalGroup');
-            if(cat === 'Gastos Personales') group.classList.remove('hidden');
-            else group.classList.add('hidden');
         }
 
         function guardarGasto() {
             const categoria = document.getElementById('gstCategoria').value;
-            const subcat = categoria === 'Gastos Personales' ? document.getElementById('gstSubPersonal').value : '';
+            const fecha = document.getElementById('gstFecha').value;
             const metodo = document.getElementById('gstMetodoPago').value;
             const detalle = document.getElementById('gstDetalle').value;
             const monto = parseFloat(document.getElementById('gstMonto').value) || 0;
+            const fileInput = document.getElementById('gstFoto');
 
-            if(!monto) return alert('Ingrese el monto del gasto');
+            if(!monto || !detalle) return alert('Ingrese la glosa y el monto del gasto.');
 
-            state.gastos.push({ id: Date.now(), sucursal: state.sucursalActual, categoria, subcat, metodo, detalle, monto });
+            let fotoUrl = '';
+            if(fileInput.files && fileInput.files[0]) {
+                fotoUrl = URL.createObjectURL(fileInput.files[0]);
+            }
+
+            const unidad = state.unidades[state.unidadActual];
+            unidad.gastos.push({
+                id: Date.now(),
+                categoria,
+                fecha,
+                metodo,
+                detalle,
+                monto,
+                foto: fotoUrl
+            });
+
             document.getElementById('gstDetalle').value = '';
             document.getElementById('gstMonto').value = '';
+            document.getElementById('gstFoto').value = '';
+            toggleModalGasto();
 
-            alert('Gasto registrado con éxito');
+            alert('Gasto registrado en el Libro Mayor.');
             renderAll();
         }
 
-        function guardarPersonal() {
-            const nombre = document.getElementById('perNombre').value;
-            const tel = document.getElementById('perTel').value;
-            const porc = parseFloat(document.getElementById('perComision').value) || 0;
-            if(!nombre) return alert('Ingrese nombre del personal');
-
-            state.personal.push({ id: Date.now(), nombre, tel, porc, servCount: 0, ingresosGen: 0 });
-            toggleModal('personalModal');
-            renderPersonal();
-        }
-
-        function guardarAgenda() {
-            const cliente = document.getElementById('agCliente').value;
-            const tel = document.getElementById('agTel').value;
-            const servicio = document.getElementById('agServicio').value;
-            const personalId = document.getElementById('agPersonal').value;
-            const p = state.personal.find(x => x.id == personalId);
-
-            if(!cliente || !tel) return alert('Ingrese datos del cliente');
-
-            state.agenda.push({ id: Date.now(), cliente, tel, servicio, personal: p ? p.nombre : 'General' });
-            toggleModal('agendaModal');
-            renderAgenda();
-        }
-
-        function enviarWhatsapp(tel, cliente, servicio) {
-            const msj = encodeURIComponent(`Hola ${cliente}, le saludamos de Rocabado Consultores (${state.sucursalActual}). Confirmamos su cita para el servicio: ${servicio}. ¡Le esperamos!`);
-            window.open(`https://api.whatsapp.com/send?phone=${tel}&text=${msj}`, '_blank');
-        }
-
-        function abrirCierreCajaModal() {
-            let efec = 0, qr = 0, porCobrar = 0, gastos = 0;
-            state.ventas.filter(v => v.sucursal === state.sucursalActual).forEach(v => {
-                if(v.metodo === 'Efectivo') efec += v.precio;
-                else if(v.metodo === 'Tarjeta/QR') qr += v.precio;
-                else if(v.metodo === 'Por Cobrar') porCobrar += v.precio;
+        function filtrarLibroMayor(cuenta) {
+            state.filtroCuentaLm = cuenta;
+            document.querySelectorAll('.btn-filtro-lm').forEach(btn => {
+                if(btn.dataset.cuenta === cuenta) {
+                    btn.className = "px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white btn-filtro-lm";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm";
+                }
             });
-            state.gastos.filter(g => g.sucursal === state.sucursalActual && g.metodo === 'Efectivo').forEach(g => {
-                gastos += g.monto;
-            });
-
-            const totalEfectivoCaja = efec - gastos;
-            document.getElementById('cierreSucursalLabel').innerText = state.sucursalActual;
-            document.getElementById('cierreEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
-            document.getElementById('cierreQr').innerText = `Bs ${qr.toFixed(2)}`;
-            document.getElementById('cierrePorCobrar').innerText = `Bs ${porCobrar.toFixed(2)}`;
-            document.getElementById('cierreGastos').innerText = `Bs ${gastos.toFixed(2)}`;
-            document.getElementById('cierreTotal').innerText = `Bs ${totalEfectivoCaja.toFixed(2)}`;
-            toggleModal('cierreCajaModal');
-        }
-
-        function ejecutarCierreTurno() {
-            alert('Cierre de caja y turno ejecutado con éxito. Los registros quedaron auditados.');
-            toggleModal('cierreCajaModal');
-        }
-
-        function guardarCategoriaGasto() {
-            const nombre = document.getElementById('ncNombre').value;
-            if(!nombre) return;
-            const select = document.getElementById('gstCategoria');
-            const opt = document.createElement('option');
-            opt.value = nombre; opt.innerText = nombre;
-            select.appendChild(opt);
-            select.value = nombre;
-            toggleModal('nuevaCategoriaModal');
-            document.getElementById('ncNombre').value = '';
+            renderLibroMayor();
         }
 
         function renderAll() {
-            renderServiciosCatalogo();
-            renderPersonal();
-            renderAgenda();
-            renderResumen();
-            renderVentasHistorial();
+            renderInformeEjecutivo();
+            renderIngresosHistorial();
+            renderLibroMayor();
         }
 
-        function renderResumen() {
-            let efec = 0, tarj = 0, porC = 0, gst = 0;
-            state.ventas.filter(v => v.sucursal === state.sucursalActual).forEach(v => {
-                if(v.metodo === 'Efectivo') efec += v.precio;
-                else if(v.metodo === 'Tarjeta/QR') tarj += v.precio;
-                else if(v.metodo === 'Por Cobrar') porC += v.precio;
+        function renderInformeEjecutivo() {
+            const unidad = state.unidades[state.unidadActual];
+            let efec = 0, qr = 0, gst = 0, comps = 0;
+            
+            unidad.ingresos.forEach(i => {
+                if(i.metodo === 'Efectivo') efec += i.monto;
+                else qr += i.monto;
+                if(i.foto) comps++;
             });
-            state.gastos.filter(g => g.sucursal === state.sucursalActual).forEach(g => {
+            
+            unidad.gastos.forEach(g => {
                 gst += g.monto;
+                if(g.foto) comps++;
             });
 
-            const utilidad = (efec + tarj) - gst;
+            const saldoFinal = unidad.saldoInicial + efec + qr - gst;
 
-            document.getElementById('resEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
-            document.getElementById('resTarjeta').innerText = `Bs ${tarj.toFixed(2)}`;
-            document.getElementById('resPorCobrar').innerText = `Bs ${porC.toFixed(2)}`;
-            document.getElementById('resGastos').innerText = `Bs ${gst.toFixed(2)}`;
-            document.getElementById('resUtilidadNeta').innerText = `Bs ${utilidad.toFixed(2)}`;
+            document.getElementById('infSaldoInicial').innerText = `Bs ${unidad.saldoInicial.toFixed(2)}`;
+            document.getElementById('infEfectivo').innerText = `Bs ${efec.toFixed(2)}`;
+            document.getElementById('infQr').innerText = `Bs ${qr.toFixed(2)}`;
+            document.getElementById('infGastos').innerText = `Bs ${gst.toFixed(2)}`;
+            document.getElementById('infSaldoFinal').innerText = `Bs ${saldoFinal.toFixed(2)}`;
+            document.getElementById('infComprobantesCount').innerText = `${comps} comprobantes digitalizados en esta unidad`;
         }
 
-        function renderVentasHistorial() {
-            const list = document.getElementById('historialVentasList');
-            const ventasSuc = state.ventas.filter(v => v.sucursal === state.sucursalActual);
+        function renderIngresosHistorial() {
+            const list = document.getElementById('listaIngresosHistorial');
+            const unidad = state.unidades[state.unidadActual];
             list.innerHTML = '';
-            if(ventasSuc.length === 0) {
-                list.innerHTML = `<span class="text-slate-400 italic">No hay ventas registradas.</span>`;
+            if(unidad.ingresos.length === 0) {
+                list.innerHTML = `<span class="text-slate-400 italic">No hay ingresos registrados.</span>`;
                 return;
             }
-            ventasSuc.forEach(v => {
+            unidad.ingresos.slice().reverse().forEach(i => {
                 list.innerHTML += `
-                    <div class="p-2.5 bg-slate-50 border rounded-xl flex justify-between items-center">
-                        <div>
-                            <strong class="text-[#081F5C]">${v.servicio}</strong>
-                            <div class="text-[10px] text-slate-500">Atendido por: ${v.personal} | Pago: ${v.metodo}</div>
+                    <div class="p-3 bg-slate-50 border rounded-xl space-y-1">
+                        <div class="flex justify-between font-bold text-[#081F5C]">
+                            <span>${i.tipo}</span>
+                            <span class="text-emerald-600">+ Bs ${i.monto.toFixed(2)}</span>
                         </div>
-                        <div class="text-right font-bold text-emerald-600">Bs ${v.precio.toFixed(2)}</div>
+                        <div class="text-[10px] text-slate-500 flex justify-between">
+                            <span>Fecha: ${i.fecha} | Pago: ${i.metodo}</span>
+                            <span>${i.observacion}</span>
+                        </div>
+                        ${i.foto ? `<div class="pt-1"><a href="${i.foto}" target="_blank" class="text-[10px] text-[#336AEC] font-bold underline"><i class="fa-solid fa-image"></i> Ver Comprobante / Foto</a></div>` : ''}
                     </div>
                 `;
             });
         }
 
-        function renderPersonal() {
-            const tbody = document.getElementById('personalList');
-            const selectAg = document.getElementById('agPersonal');
-            const selectVta = document.getElementById('vtaPersonal');
+        function renderLibroMayor() {
+            const tbody = document.getElementById('libroMayorList');
+            const unidad = state.unidades[state.unidadActual];
             tbody.innerHTML = '';
-            selectAg.innerHTML = '';
-            selectVta.innerHTML = '';
 
-            state.personal.forEach(p => {
-                let comisionTotalPagar = (p.ingresosGen * p.porc) / 100;
+            let gastosFiltrados = unidad.gastos;
+            if(state.filtroCuentaLm !== 'Todos') {
+                gastosFiltrados = unidad.gastos.filter(g => g.categoria === state.filtroCuentaLm);
+            }
+
+            if(gastosFiltrados.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400 italic">No hay registros en este Libro Mayor.</td></tr>`;
+                return;
+            }
+
+            gastosFiltrados.slice().reverse().forEach(g => {
                 tbody.innerHTML += `
                     <tr>
-                        <td class="p-3 font-bold text-[#081F5C]">${p.nombre}</td>
-                        <td class="p-3">${p.tel}</td>
-                        <td class="p-3 font-semibold">${p.porc}%</td>
-                        <td class="p-3 text-center font-bold">${p.servCount}</td>
-                        <td class="p-3 font-semibold text-emerald-600">Bs ${p.ingresosGen.toFixed(2)}</td>
-                        <td class="p-3 font-bold text-[#336AEC]">Bs ${comisionTotalPagar.toFixed(2)}</td>
+                        <td class="p-3">${g.fecha}</td>
+                        <td class="p-3 font-bold text-[#081F5C]">${g.categoria}</td>
+                        <td class="p-3">${g.detalle}</td>
+                        <td class="p-3 font-semibold">${g.metodo}</td>
+                        <td class="p-3">${g.foto ? `<a href="${g.foto}" target="_blank" class="text-[#336AEC] font-bold underline"><i class="fa-solid fa-paperclip"></i> Ver foto</a>` : '<span class="text-slate-300">Sin foto</span>'}</td>
+                        <td class="p-3 text-right font-bold text-rose-600">Bs ${g.monto.toFixed(2)}</td>
                     </tr>
                 `;
-
-                selectAg.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
-                selectVta.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
             });
         }
 
-        function renderMaster() {
-            const tbody = document.getElementById('masterSucursalesList');
-            const sucursales = ['Sucursal Pampa', 'Sucursal Villa', 'Sucursal Norte'];
+        function renderConsolidado() {
+            const tbody = document.getElementById('consUnidadesList');
+            const nombresUnidades = Object.keys(state.unidades);
             tbody.innerHTML = '';
 
-            let totalIng = 0, totalGst = 0;
+            let totalIngG = 0, totalGstG = 0;
 
-            sucursales.forEach(suc => {
-                let ing = 0, gst = 0;
-                state.ventas.filter(v => v.sucursal === suc).forEach(v => ing += v.precio);
-                state.gastos.filter(g => g.sucursal === suc).forEach(g => gst += g.monto);
-                let util = ing - gst;
-                totalIng += ing;
-                totalGst += gst;
+            nombresUnidades.forEach(nom => {
+                const u = state.unidades[nom];
+                let ingU = 0, gstU = 0;
+                u.ingresos.forEach(i => ingU += i.monto);
+                u.gastos.forEach(g => gstU += g.monto);
+                let saldoU = u.saldoInicial + ingU - gstU;
+
+                totalIngG += ingU;
+                totalGstG += gstU;
 
                 tbody.innerHTML += `
                     <tr>
-                        <td class="p-3 font-bold text-[#081F5C]">${suc}</td>
-                        <td class="p-3">${state.ventas.filter(v => v.sucursal === suc).length} servicios</td>
-                        <td class="p-3 font-semibold text-emerald-600">Bs ${ing.toFixed(2)}</td>
-                        <td class="p-3 font-semibold text-rose-600">Bs ${gst.toFixed(2)}</td>
-                        <td class="p-3 font-bold text-[#336AEC]">Bs ${util.toFixed(2)}</td>
+                        <td class="p-3 font-bold text-[#081F5C]">${nom}</td>
+                        <td class="p-3">Bs ${u.saldoInicial.toFixed(2)}</td>
+                        <td class="p-3 font-semibold text-emerald-600">Bs ${ingU.toFixed(2)}</td>
+                        <td class="p-3 font-semibold text-rose-600">Bs ${gstU.toFixed(2)}</td>
+                        <td class="p-3 font-bold text-[#336AEC]">Bs ${saldoU.toFixed(2)}</td>
                     </tr>
                 `;
             });
 
-            document.getElementById('masterIngresos').innerText = `Bs ${totalIng.toFixed(2)}`;
-            document.getElementById('masterGastos').innerText = `Bs ${totalGst.toFixed(2)}`;
-            document.getElementById('masterUtilidad').innerText = `Bs ${(totalIng - totalGst).toFixed(2)}`;
+            document.getElementById('consTotalIngresos').innerText = `Bs ${totalIngG.toFixed(2)}`;
+            document.getElementById('consTotalGastos').innerText = `Bs ${totalGstG.toFixed(2)}`;
+            document.getElementById('consTotalNeto').innerText = `Bs ${(totalIngG - totalGstG).toFixed(2)}`;
         }
     </script>
 </body>
