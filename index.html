@@ -48,11 +48,6 @@
                 <h1 class="text-2xl font-black text-white tracking-wider">MICKEL ROCABADO</h1>
                 <p class="text-[11px] font-bold text-[#C5A059] tracking-widest uppercase mt-0.5">Control Financiero & Auditoría RAC</p>
                 <p class="text-[11px] italic text-amber-200/90 font-medium mt-1">“Transformando números en decisiones”</p>
-                
-                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-300">
-                    <span class="font-bold text-white block">Rocabado Auditores Consultores</span>
-                    <span class="text-[10px] text-[#70A6D1]">Gestión Financiera Integral • Consultorios y Cuentas Personales</span>
-                </div>
             </div>
 
             <div class="space-y-3 px-2">
@@ -61,7 +56,7 @@
                         <div class="p-2 bg-black/20 rounded-lg"><i class="fa-solid fa-crown text-base"></i></div>
                         <div>
                             <div>Nivel Maestro (Administrador)</div>
-                            <div class="text-[10px] text-amber-100 font-normal">Control total, opera y ve TODO</div>
+                            <div class="text-[10px] text-amber-100 font-normal">Control total, edita, crea categorías y ve TODO</div>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-xs"></i>
@@ -104,7 +99,6 @@
     <!-- APLICACIÓN PRINCIPAL -->
     <div id="appScreen" class="hidden flex-1 flex flex-col">
         
-        <!-- HEADER INSTITUCIONAL CON SELECTOR DE SUCURSALES -->
         <header class="glass-header text-white shadow-xl sticky top-0 z-30 no-print">
             <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
@@ -117,18 +111,17 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR DE SUCURSAL / UNIDAD -->
                 <div class="flex items-center gap-2 w-full md:w-auto justify-end">
                     <div class="bg-white/10 p-1 rounded-xl border border-white/20 flex items-center w-full md:w-auto">
                         <span class="text-[10px] text-amber-200 px-2 font-bold uppercase hidden sm:inline">Unidad:</span>
                         <select id="selectUnidadNegocio" onchange="cambiarUnidadNegocio()" class="bg-[#081F5C] text-white text-xs font-bold p-2 rounded-lg border border-white/20 outline-none w-full md:w-auto">
                             <option value="CASA MATRIZ VILLA">CASA MATRIZ VILLA</option>
                             <option value="SUCURSAL PAMPA ISLA">SUCURSAL PAMPA ISLA</option>
-                            <option value="SUCURSAL SANTIAGUITO">SUCURSAL SANTIAGUITO</option>
+                            <option value="SUCURSAL SANTIAGUITO">SUCURsal SANTIAGUITO</option>
                             <option value="SUCURSAL PERSONAL">SUCURSAL PERSONAL (Mickel)</option>
                         </select>
                     </div>
-                    <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-700 text-xs px-3 py-2 rounded-xl font-bold transition text-white" title="Imprimir o Guardar PDF">
+                    <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-700 text-xs px-3 py-2 rounded-xl font-bold transition text-white">
                         <i class="fa-solid fa-print"></i> Imprimir
                     </button>
                     <button onclick="logout()" class="bg-rose-600 hover:bg-rose-700 text-xs px-3 py-2 rounded-xl font-bold transition text-white">
@@ -137,7 +130,6 @@
                 </div>
             </div>
 
-            <!-- NAVEGACIÓN PRINCIPAL EN 4 PESTAÑAS -->
             <nav class="flex border-t border-white/10 overflow-x-auto max-w-6xl mx-auto text-xs">
                 <button onclick="switchTab('tabInforme')" class="tab-btn flex-1 py-3 px-3 text-center font-bold text-[#C5A059] border-b-2 border-[#C5A059] bg-white/5 whitespace-nowrap" id="btn-tabInforme">
                     <i class="fa-solid fa-chart-pie block text-sm mb-1"></i> 1. Informe Ejecutivo
@@ -154,10 +146,9 @@
             </nav>
         </header>
 
-        <!-- CONTENIDOS -->
         <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-6">
 
-            <!-- 1. INFORME EJECUTIVO (TRANQUILIDAD FAMILIAR) -->
+            <!-- 1. INFORME EJECUTIVO -->
             <section id="tabInforme" class="tab-content space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
@@ -203,9 +194,9 @@
             <!-- 2. INGRESOS Y SALDOS -->
             <section id="tabIngresos" class="tab-content hidden space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Formulario de Ingresos -->
                     <div class="executive-card p-5 space-y-4 master-only no-print">
-                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Registrar Ingreso o Fondo Inicial</h3>
+                        <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider" id="tituloFormIngreso">Registrar Ingreso o Fondo Inicial</h3>
+                        <input type="hidden" id="editIngresoId" value="">
                         
                         <div>
                             <label class="text-[10px] font-bold text-slate-600 uppercase">Tipo de Registro</label>
@@ -244,10 +235,12 @@
                             <input type="file" id="ingFoto" accept="image/*" class="w-full p-2 border rounded-xl text-xs bg-slate-50">
                         </div>
 
-                        <button onclick="guardarIngreso()" class="w-full bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar Ingreso</button>
+                        <div class="flex gap-2">
+                            <button onclick="guardarIngreso()" id="btnGuardarIngreso" class="flex-1 bg-[#081F5C] text-white py-3 rounded-xl font-bold text-xs shadow-lg hover:bg-[#336AEC] transition">Registrar Ingreso</button>
+                            <button onclick="cancelarEdicionIngreso()" id="btnCancelarIngreso" class="hidden bg-slate-300 px-4 py-3 rounded-xl font-bold text-xs text-slate-700">Cancelar</button>
+                        </div>
                     </div>
 
-                    <!-- Historial de Ingresos -->
                     <div class="executive-card p-5 space-y-4 flex flex-col">
                         <h3 class="font-bold text-[#081F5C] text-xs uppercase tracking-wider">Historial de Ingresos (<span class="unidad-nombre-ref">CASA MATRIZ VILLA</span>)</h3>
                         <div class="flex-1 overflow-y-auto max-h-[450px] space-y-2 text-xs" id="listaIngresosHistorial">
@@ -262,25 +255,20 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
                     <div>
                         <h2 class="text-sm font-bold text-[#081F5C]">Libro Mayor Auxiliar de Gastos</h2>
-                        <p class="text-[11px] text-slate-500">Incluye sueldos, alquileres, insumos, salud, préstamo de auto y servicios personales</p>
+                        <p class="text-[11px] text-slate-500">Incluye sueldos, alquileres, insumos, salud, préstamos a terceros y más</p>
                     </div>
-                    <button onclick="abrirModalGasto()" class="master-only no-print bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded-xl text-xs font-bold shadow transition">+ Registrar Nuevo Gasto</button>
+                    <div class="flex gap-2 master-only no-print">
+                        <button onclick="abrirModalNuevaCategoria()" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded-xl text-xs font-bold shadow transition">+ Crear Categoría</button>
+                        <button onclick="abrirModalGasto()" class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded-xl text-xs font-bold shadow transition">+ Registrar Gasto</button>
+                    </div>
                 </div>
 
-                <!-- FILTRO POR CUENTA / CLASIFICACIÓN -->
-                <div class="executive-card p-4 flex flex-wrap gap-2 items-center text-xs no-print">
+                <!-- FILTRO POR CUENTA / CLASIFICACIÓN DINÁMICA -->
+                <div class="executive-card p-4 flex flex-wrap gap-2 items-center text-xs no-print" id="contenedorFiltrosCategorias">
                     <span class="font-bold text-slate-600 uppercase text-[10px]">Filtrar Cuenta:</span>
-                    <button onclick="filtrarLibroMayor('Todos')" class="px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white btn-filtro-lm" data-cuenta="Todos">Todas</button>
-                    <button onclick="filtrarLibroMayor('Gastos Médicos y Salud')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Gastos Médicos y Salud">Salud y Medicamentos</button>
-                    <button onclick="filtrarLibroMayor('Alquiler de Cuarto / Oficina')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Alquiler de Cuarto / Oficina">Alquileres</button>
-                    <button onclick="filtrarLibroMayor('Servicios Básicos')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Servicios Básicos">Servicios Básicos</button>
-                    <button onclick="filtrarLibroMayor('Préstamo Automóvil')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Préstamo Automóvil">Préstamo Auto</button>
-                    <button onclick="filtrarLibroMayor('Mantenimiento y Gasolina Auto')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Mantenimiento y Gasolina Auto">Gasolina / Auto</button>
-                    <button onclick="filtrarLibroMayor('Sueldos y Comisiones')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Sueldos y Comisiones">Sueldos</button>
-                    <button onclick="filtrarLibroMayor('Insumos y Mercadería')" class="px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm" data-cuenta="Insumos y Mercadería">Insumos</button>
+                    <!-- Generado dinámicamente -->
                 </div>
 
-                <!-- TABLA DEL LIBRO MAYOR -->
                 <div class="executive-card overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
@@ -292,6 +280,7 @@
                                     <th class="p-3">Pago</th>
                                     <th class="p-3">Comprobante</th>
                                     <th class="p-3 text-right">Monto (Bs)</th>
+                                    <th class="p-3 text-center master-only">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="libroMayorList" class="divide-y divide-slate-100">
@@ -351,21 +340,16 @@
         </main>
     </div>
 
-    <!-- MODAL DE REGISTRO DE GASTO -->
+    <!-- MODAL DE REGISTRO / EDICIÓN DE GASTO -->
     <div id="modalGasto" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl max-w-md w-full p-5 space-y-3 text-xs shadow-2xl">
-            <h3 class="font-bold text-[#081F5C] text-sm">Registrar Gasto (Libro Mayor)</h3>
+            <h3 class="font-bold text-[#081F5C] text-sm" id="tituloModalGasto">Registrar Gasto (Libro Mayor)</h3>
+            <input type="hidden" id="editGastoId" value="">
             
             <div>
                 <label class="text-[10px] font-bold text-slate-600 uppercase">Cuenta / Categoría</label>
                 <select id="gstCategoria" class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
-                    <option value="Gastos Médicos y Salud">Gastos Médicos y Salud (Hospital, Medicamentos, Exámenes)</option>
-                    <option value="Alquiler de Cuarto / Oficina">Alquiler de Cuarto / Oficina</option>
-                    <option value="Servicios Básicos">Servicios Básicos (Luz, Agua, Internet)</option>
-                    <option value="Préstamo Automóvil">Préstamo Automóvil</option>
-                    <option value="Mantenimiento y Gasolina Auto">Mantenimiento y Gasolina Auto</option>
-                    <option value="Sueldos y Comisiones">Sueldos y Comisiones</option>
-                    <option value="Insumos y Mercadería">Insumos y Mercadería</option>
+                    <!-- Dinámico con categorías creadas -->
                 </select>
             </div>
 
@@ -384,7 +368,7 @@
 
             <div>
                 <label class="text-[10px] font-bold text-slate-600 uppercase">Glosa / Detalle</label>
-                <input type="text" id="gstDetalle" placeholder="Ej. Compra de medicamentos o pago de alquiler..." class="w-full p-2.5 border rounded-xl bg-slate-50">
+                <input type="text" id="gstDetalle" placeholder="Ej. Préstamo a terceros, medicamentos..." class="w-full p-2.5 border rounded-xl bg-slate-50">
             </div>
 
             <div>
@@ -393,13 +377,28 @@
             </div>
 
             <div>
-                <label class="text-[10px] font-bold text-slate-600 uppercase">Adjuntar Receta / Factura / Recibo (Foto)</label>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Adjuntar Recambio / Comprobante (Foto)</label>
                 <input type="file" id="gstFoto" accept="image/*" class="w-full p-2 border rounded-xl bg-slate-50">
             </div>
 
             <div class="flex space-x-2 pt-2">
                 <button onclick="guardarGasto()" class="flex-1 bg-rose-600 text-white py-2.5 rounded-xl font-bold">Guardar Gasto</button>
                 <button onclick="toggleModalGasto()" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NUEVA CATEGORÍA -->
+    <div id="modalCategoria" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-3 text-xs shadow-2xl">
+            <h3 class="font-bold text-[#081F5C] text-sm">Crear Nueva Categoría de Gasto</h3>
+            <div>
+                <label class="text-[10px] font-bold text-slate-600 uppercase">Nombre de la Categoría</label>
+                <input type="text" id="nuevaCategoriaInput" placeholder="Ej. Préstamos a terceros, Inversiones..." class="w-full p-2.5 border rounded-xl bg-slate-50 font-medium">
+            </div>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="agregarNuevaCategoria()" class="flex-1 bg-[#081F5C] text-white py-2.5 rounded-xl font-bold">Añadir Categoría</button>
+                <button onclick="toggleModalCategoria()" class="flex-1 bg-slate-200 py-2.5 rounded-xl font-bold text-slate-600">Cancelar</button>
             </div>
         </div>
     </div>
@@ -426,12 +425,22 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE LÓGICA Y CONTROL FINANCIERO -->
+    <!-- SCRIPT DE LÓGICA CON PERSISTENCIA Y EDICIÓN -->
     <script>
         let state = {
-            rol: 'master', // 'master' o 'consulta'
+            rol: 'master', 
             unidadActual: 'CASA MATRIZ VILLA',
             filtroCuentaLm: 'Todos',
+            categorias: [
+                'Gastos Médicos y Salud',
+                'Alquiler de Cuarto / Oficina',
+                'Servicios Básicos',
+                'Préstamo Automóvil',
+                'Mantenimiento y Gasolina Auto',
+                'Sueldos y Comisiones',
+                'Insumos y Mercadería',
+                'Préstamo a Terceros'
+            ],
             unidades: {
                 'CASA MATRIZ VILLA': { saldoInicial: 20000, ingresos: [], gastos: [] },
                 'SUCURSAL PAMPA ISLA': { saldoInicial: 0, ingresos: [], gastos: [] },
@@ -440,7 +449,24 @@
             }
         };
 
+        function cargarDatosGuardados() {
+            const guardadoDatos = localStorage.getItem('rac_mickel_rocabado_data');
+            const guardadoCategorias = localStorage.getItem('rac_mickel_rocabado_categorias');
+            if (guardadoDatos) {
+                try { state.unidades = JSON.parse(guardadoDatos); } catch(e) {}
+            }
+            if (guardadoCategorias) {
+                try { state.categorias = JSON.parse(guardadoCategorias); } catch(e) {}
+            }
+        }
+
+        function persistirDatos() {
+            localStorage.setItem('rac_mickel_rocabado_data', JSON.stringify(state.unidades));
+            localStorage.setItem('rac_mickel_rocabado_categorias', JSON.stringify(state.categorias));
+        }
+
         window.onload = function() {
+            cargarDatosGuardados();
             const hoy = new Date().toISOString().split('T')[0];
             if(document.getElementById('ingFecha')) document.getElementById('ingFecha').value = hoy;
             if(document.getElementById('gstFecha')) document.getElementById('gstFecha').value = hoy;
@@ -468,7 +494,7 @@
             } else if(rolTarget === 'consulta' && pass === 'familia2026') {
                 state.rol = 'consulta';
             } else {
-                alert('Contraseña incorrecta. Intente nuevamente.');
+                alert('Contraseña incorrecta.');
                 return;
             }
 
@@ -521,6 +547,12 @@
         }
 
         function abrirModalGasto() {
+            document.getElementById('editGastoId').value = '';
+            document.getElementById('tituloModalGasto').innerText = 'Registrar Gasto (Libro Mayor)';
+            document.getElementById('gstDetalle').value = '';
+            document.getElementById('gstMonto').value = '';
+            document.getElementById('gstFoto').value = '';
+            poblarSelectCategorias();
             document.getElementById('modalGasto').classList.remove('hidden');
             document.getElementById('modalGasto').classList.add('flex');
         }
@@ -528,6 +560,37 @@
         function toggleModalGasto() {
             document.getElementById('modalGasto').classList.toggle('hidden');
             document.getElementById('modalGasto').classList.toggle('flex');
+        }
+
+        function abrirModalNuevaCategoria() {
+            document.getElementById('nuevaCategoriaInput').value = '';
+            document.getElementById('modalCategoria').classList.remove('hidden');
+            document.getElementById('modalCategoria').classList.add('flex');
+        }
+
+        function toggleModalCategoria() {
+            document.getElementById('modalCategoria').classList.toggle('hidden');
+            document.getElementById('modalCategoria').classList.toggle('flex');
+        }
+
+        function agregarNuevaCategoria() {
+            const nueva = document.getElementById('nuevaCategoriaInput').value.trim();
+            if(!nueva) return alert('Ingrese un nombre válido para la categoría.');
+            if(state.categorias.includes(nueva)) return alert('Esa categoría ya existe.');
+
+            state.categorias.push(nueva);
+            persistirDatos();
+            toggleModalCategoria();
+            renderAll();
+            alert('Categoría creada exitosamente.');
+        }
+
+        function poblarSelectCategorias() {
+            const select = document.getElementById('gstCategoria');
+            select.innerHTML = '';
+            state.categorias.forEach(cat => {
+                select.innerHTML += `<option value="${cat}">${cat}</option>`;
+            });
         }
 
         function abrirCierreCaja() {
@@ -558,6 +621,7 @@
         }
 
         function guardarIngreso() {
+            const idEdit = document.getElementById('editIngresoId').value;
             const tipo = document.getElementById('ingTipo').value;
             const fecha = document.getElementById('ingFecha').value;
             const metodo = document.getElementById('ingMetodo').value;
@@ -573,29 +637,75 @@
             }
 
             const unidad = state.unidades[state.unidadActual];
-            if(tipo === 'Saldo Inicial de Caja') {
-                unidad.saldoInicial = monto;
+
+            if(idEdit) {
+                // Editar existente
+                const item = unidad.ingresos.find(i => i.id == idEdit);
+                if(item) {
+                    item.tipo = tipo;
+                    item.fecha = fecha;
+                    item.metodo = metodo;
+                    item.monto = monto;
+                    item.observacion = observacion;
+                    if(fotoUrl) item.foto = fotoUrl;
+                }
+                cancelarEdicionIngreso();
+            } else {
+                // Nuevo
+                if(tipo === 'Saldo Inicial de Caja') {
+                    unidad.saldoInicial = monto;
+                }
+                unidad.ingresos.push({
+                    id: Date.now(),
+                    tipo, fecha, metodo, monto, observacion, foto: fotoUrl
+                });
+                document.getElementById('ingMonto').value = '';
+                document.getElementById('ingObservacion').value = '';
+                document.getElementById('ingFoto').value = '';
             }
 
-            unidad.ingresos.push({
-                id: Date.now(),
-                tipo,
-                fecha,
-                metodo,
-                monto,
-                observacion,
-                foto: fotoUrl
-            });
+            persistirDatos();
+            renderAll();
+            alert('Registro de ingreso guardado correctamente.');
+        }
 
+        function editarIngreso(id) {
+            const unidad = state.unidades[state.unidadActual];
+            const item = unidad.ingresos.find(i => i.id == id);
+            if(!item) return;
+
+            document.getElementById('editIngresoId').value = item.id;
+            document.getElementById('ingTipo').value = item.tipo;
+            document.getElementById('ingFecha').value = item.fecha;
+            document.getElementById('ingMetodo').value = item.metodo;
+            document.getElementById('ingMonto').value = item.monto;
+            document.getElementById('ingObservacion').value = item.observacion;
+            
+            document.getElementById('tituloFormIngreso').innerText = "Editar Ingreso / Saldo";
+            document.getElementById('btnGuardarIngreso').innerText = "Actualizar Ingreso";
+            document.getElementById('btnCancelarIngreso').classList.remove('hidden');
+        }
+
+        function cancelarEdicionIngreso() {
+            document.getElementById('editIngresoId').value = '';
             document.getElementById('ingMonto').value = '';
             document.getElementById('ingObservacion').value = '';
             document.getElementById('ingFoto').value = '';
+            document.getElementById('tituloFormIngreso').innerText = "Registrar Ingreso o Fondo Inicial";
+            document.getElementById('btnGuardarIngreso').innerText = "Registrar Ingreso";
+            document.getElementById('btnCancelarIngreso').classList.add('hidden');
+        }
 
-            alert('Ingreso registrado exitosamente.');
+        function eliminarIngreso(id) {
+            if(!confirm('¿Seguro que deseas eliminar este ingreso?')) return;
+            const unidad = state.unidades[state.unidadActual];
+            unidad.ingresos = unidad.ingresos.filter(i => i.id != id);
+            persistirDatos();
             renderAll();
         }
 
         function guardarGasto() {
+            const idEdit = document.getElementById('editGastoId').value;
             const categoria = document.getElementById('gstCategoria').value;
             const fecha = document.getElementById('gstFecha').value;
             const metodo = document.getElementById('gstMetodoPago').value;
@@ -611,40 +721,80 @@
             }
 
             const unidad = state.unidades[state.unidadActual];
-            unidad.gastos.push({
-                id: Date.now(),
-                categoria,
-                fecha,
-                metodo,
-                detalle,
-                monto,
-                foto: fotoUrl
-            });
 
-            document.getElementById('gstDetalle').value = '';
-            document.getElementById('gstMonto').value = '';
-            document.getElementById('gstFoto').value = '';
+            if(idEdit) {
+                const item = unidad.gastos.find(g => g.id == idEdit);
+                if(item) {
+                    item.categoria = categoria;
+                    item.fecha = fecha;
+                    item.metodo = metodo;
+                    item.detalle = detalle;
+                    item.monto = monto;
+                    if(fotoUrl) item.foto = fotoUrl;
+                }
+            } else {
+                unidad.gastos.push({
+                    id: Date.now(),
+                    categoria, fecha, metodo, detalle, monto, foto: fotoUrl
+                });
+            }
+
+            persistirDatos();
             toggleModalGasto();
+            renderAll();
+            alert('Gasto guardado correctamente.');
+        }
 
-            alert('Gasto registrado en el Libro Mayor.');
+        function editarGasto(id) {
+            const unidad = state.unidades[state.unidadActual];
+            const item = unidad.gastos.find(g => g.id == id);
+            if(!item) return;
+
+            poblarSelectCategorias();
+            document.getElementById('editGastoId').value = item.id;
+            document.getElementById('tituloModalGasto').innerText = 'Editar Gasto (Libro Mayor)';
+            document.getElementById('gstCategoria').value = item.categoria;
+            document.getElementById('gstFecha').value = item.fecha;
+            document.getElementById('gstMetodoPago').value = item.metodo;
+            document.getElementById('gstDetalle').value = item.detalle;
+            document.getElementById('gstMonto').value = item.monto;
+
+            document.getElementById('modalGasto').classList.remove('hidden');
+            document.getElementById('modalGasto').classList.add('flex');
+        }
+
+        function eliminarGasto(id) {
+            if(!confirm('¿Seguro que deseas eliminar este gasto?')) return;
+            const unidad = state.unidades[state.unidadActual];
+            unidad.gastos = unidad.gastos.filter(g => g.id != id);
+            persistirDatos();
             renderAll();
         }
 
         function filtrarLibroMayor(cuenta) {
             state.filtroCuentaLm = cuenta;
-            document.querySelectorAll('.btn-filtro-lm').forEach(btn => {
-                if(btn.dataset.cuenta === cuenta) {
-                    btn.className = "px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white btn-filtro-lm";
-                } else {
-                    btn.className = "px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 btn-filtro-lm";
-                }
-            });
+            renderFiltrosCategorias();
             renderLibroMayor();
+        }
+
+        function renderFiltrosCategorias() {
+            const cont = document.getElementById('contenedorFiltrosCategorias');
+            cont.innerHTML = `<span class="font-bold text-slate-600 uppercase text-[10px]">Filtrar Cuenta:</span>`;
+            
+            // Botón Todas
+            let claseTodas = state.filtroCuentaLm === 'Todos' ? "px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white" : "px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200";
+            cont.innerHTML += `<button onclick="filtrarLibroMayor('Todos')" class="${claseTodas}">Todas</button>`;
+
+            state.categorias.forEach(cat => {
+                let claseBtn = state.filtroCuentaLm === cat ? "px-3 py-1.5 rounded-lg font-bold bg-[#081F5C] text-white" : "px-3 py-1.5 rounded-lg font-medium bg-slate-100 text-slate-700 hover:bg-slate-200";
+                cont.innerHTML += `<button onclick="filtrarLibroMayor('${cat}')" class="${claseBtn}">${cat}</button>`;
+            });
         }
 
         function renderAll() {
             renderInformeEjecutivo();
             renderIngresosHistorial();
+            renderFiltrosCategorias();
             renderLibroMayor();
         }
 
@@ -682,6 +832,13 @@
                 return;
             }
             unidad.ingresos.slice().reverse().forEach(i => {
+                let botonesAccion = state.rol === 'master' ? `
+                    <div class="mt-2 flex gap-2 justify-end no-print">
+                        <button onclick="editarIngreso(${i.id})" class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold hover:bg-amber-200"><i class="fa-solid fa-pen"></i> Editar</button>
+                        <button onclick="eliminarIngreso(${i.id})" class="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold hover:bg-rose-200"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                    </div>
+                ` : '';
+
                 list.innerHTML += `
                     <div class="p-3 bg-slate-50 border rounded-xl space-y-1">
                         <div class="flex justify-between font-bold text-[#081F5C]">
@@ -693,6 +850,7 @@
                             <span>${i.observacion}</span>
                         </div>
                         ${i.foto ? `<div class="pt-1"><a href="${i.foto}" target="_blank" class="text-[10px] text-[#336AEC] font-bold underline"><i class="fa-solid fa-image"></i> Ver Comprobante / Foto</a></div>` : ''}
+                        ${botonesAccion}
                     </div>
                 `;
             });
@@ -709,11 +867,18 @@
             }
 
             if(gastosFiltrados.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400 italic">No hay registros en este Libro Mayor.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-400 italic">No hay registros en este Libro Mayor.</td></tr>`;
                 return;
             }
 
             gastosFiltrados.slice().reverse().forEach(g => {
+                let columnaAccionesMaster = state.rol === 'master' ? `
+                    <td class="p-3 text-center no-print">
+                        <button onclick="editarGasto(${g.id})" class="text-amber-600 hover:text-amber-800 px-1 font-bold" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="eliminarGasto(${g.id})" class="text-rose-600 hover:text-rose-800 px-1 font-bold" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                ` : '';
+
                 tbody.innerHTML += `
                     <tr>
                         <td class="p-3">${g.fecha}</td>
@@ -722,6 +887,7 @@
                         <td class="p-3 font-semibold">${g.metodo}</td>
                         <td class="p-3">${g.foto ? `<a href="${g.foto}" target="_blank" class="text-[#336AEC] font-bold underline"><i class="fa-solid fa-paperclip"></i> Ver foto</a>` : '<span class="text-slate-300">Sin foto</span>'}</td>
                         <td class="p-3 text-right font-bold text-rose-600">Bs ${g.monto.toFixed(2)}</td>
+                        ${columnaAccionesMaster}
                     </tr>
                 `;
             });
